@@ -101,7 +101,7 @@ Bundle 'FuzzyFinder'
 " non github repos
 Bundle 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (ie. when working on your own plugin)
-Bundle 'file:///Users/gmarik/path/to/plugin'
+"Bundle 'file:///Users/gmarik/path/to/plugin'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/unite-ssh'
