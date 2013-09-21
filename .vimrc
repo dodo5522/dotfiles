@@ -24,6 +24,10 @@ set ruler						"今何行目? 何文字目? をステータスバーに表示し
 set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f
 set grepprg=grep\ -nh
 
+" コマンドラインモードの補完を便利にする
+set wildmenu
+set wildmode=longest:full,full
+
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>		
 
