@@ -20,6 +20,7 @@ set shiftwidth=4
 set showmode					"現在のステータスをステータス行に表示
 set noic						"文字列検索時に大文字小文字の区別をする
 set ruler						"今何行目? 何文字目? をステータスバーに表示してくれる
+"set whichwrap=b,s,[,],<,>,~	"行の先頭から前の行の末尾に、行の末尾から次の行の先頭に行く
 
 " grep検索を設定する
 set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f
