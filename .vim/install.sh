@@ -1,8 +1,9 @@
 #!/bin/sh
-if [ -d ./bundle ]; then
+if ! [ -d ./bundle ]; then
+    mkdir -p ./bundle
     cd ./bundle
 	if ! [ -d ./vundle ]; then
-        git clone https://github.com/gmarik/vundle.git ./vundle
+        git clone git://github.com/Shougo/neobundle.vim
     fi
 fi
 
