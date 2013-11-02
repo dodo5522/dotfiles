@@ -109,6 +109,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle 'Lokaltog/vim-easymotion', '09c0cea8'   " This plugin is locked at revision 09c0cea8 
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+NeoBundle 'thinca/vim-quickrun'
 " vim-scripts repos
 NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
