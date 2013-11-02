@@ -34,6 +34,9 @@ set wildmode=longest:full,full
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>		
 
+" neocomplcacheを有効にする
+let g:neocomplcache_enable_at_startup = 1
+
 "--------------------
 " tab control setting
 "--------------------
@@ -99,6 +102,7 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-ssh'
 NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
 " My Bundles here:
