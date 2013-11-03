@@ -1,7 +1,9 @@
-"--------------------
-" 基本的な設定
-"--------------------
+"================================================
+" basic settings
+"================================================
+"{{{
 syntax on						" syntax word color
+set foldmethod=marker           " マーカーに囲まれた部分を折り畳む
 set mouse=						" mouseの連動機能を無効にする
 set encoding=utf-8				" encoding
 set autoindent					"新しい行のインデントを現在行と同じにする
@@ -22,24 +24,19 @@ set noic						"文字列検索時に大文字小文字の区別をする
 set ruler						"今何行目? 何文字目? をステータスバーに表示してくれる
 "set whichwrap=b,s,[,],<,>,~	"行の先頭から前の行の末尾に、行の末尾から次の行の先頭に行く
 set laststatus=3
-
-" grep検索を設定する
-set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f
+set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f " grep検索を設定する
 set grepprg=grep\ -nh
-
-" コマンドラインモードの補完を便利にする
-set wildmenu
+set wildmenu                   " コマンドラインモードの補完を便利にする
 set wildmode=longest:full,full
 
 " 検索結果のハイライトをEsc連打でクリアする
-nnoremap <ESC><ESC> :nohlsearch<CR>		
+nnoremap <ESC><ESC> :nohlsearch<CR>
+"}}}
 
-" neocomplcacheを有効にする
-let g:neocomplcache_enable_at_startup = 1
-
-"--------------------
+"================================================
 " tab control setting
-"--------------------
+"================================================
+"{{{
 " Anywhere SID.
 function! s:SID_PREFIX()
   return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
@@ -83,10 +80,13 @@ map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
 " tn 次のタブ
 map <silent> [Tag]p :tabprevious<CR>
+" tn 前のタブ
+"}}}
 
-"--------------------
-" Configure neobundles
-"--------------------
+"================================================
+" configure neobundle
+"================================================
+"{{{
 if has('vim_starting')
 set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
@@ -106,7 +106,6 @@ NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
 " My Bundles here:
-"
 " Note: You don't set neobundle setting in .gvimrc!
 " Original repos on github
 NeoBundle 'tpope/vim-fugitive'
@@ -128,8 +127,6 @@ NeoBundle 'git://git.wincent.com/command-t.git'
 NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
 "NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
 
-" ...
-
 filetype plugin indent on     " Required!
 "
 " Brief help
@@ -139,22 +136,31 @@ filetype plugin indent on     " Required!
 
 " Installation check.
 NeoBundleCheck
+"}}}
 
-"--------------------
-" Configure vim-indent-guides
-"--------------------
-"" vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
+"================================================
+" configure vim-indent-guides
+"================================================
+"{{{
+""" vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
 "let g:indent_guides_enable_on_vim_startup=1
 "" ガイドをスタートするインデントの量
 "let g:indent_guides_start_level=2
 "" 自動カラーを無効にする
 "let g:indent_guides_auto_colors=0
 "" 奇数インデントのカラー
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
 "" 偶数インデントのカラー
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
 "" ハイライト色の変化の幅
 "let g:indent_guides_color_change_percent = 30
 "" ガイドの幅
 "let g:indent_guides_guide_size = 1
+"}}}
+
+"================================================
+" configure neocomplcache
+"================================================
+" neocomplcacheを有効にする
+let g:neocomplcache_enable_at_startup = 1
 
