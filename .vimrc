@@ -20,7 +20,8 @@ set smarttab					"新しい行を作った時に高度な自動インデント�
 set tabstop=4
 set shiftwidth=4
 set showmode					"現在のステータスをステータス行に表示
-set noic						"文字列検索時に大文字小文字の区別をする
+set ignorecase					"文字列検索時に大文字小文字の区別をしない
+set smartcase					"大文字で検索されたら対象を大文字限定にする
 set ruler						"今何行目? 何文字目? をステータスバーに表示してくれる
 "set whichwrap=b,s,[,],<,>,~	"行の先頭から前の行の末尾に、行の末尾から次の行の先頭に行く
 set laststatus=3
