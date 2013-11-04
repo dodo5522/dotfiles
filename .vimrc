@@ -2,7 +2,12 @@
 " basic settings
 "================================================
 "{{{
+colorscheme molokai
 syntax on						" syntax word color
+let g:molokai_original=1
+let g:rehash256=1
+set background=dark
+
 set foldmethod=marker           " マーカーに囲まれた部分を折り畳む
 set mouse=						" mouseの連動機能を無効にする
 set encoding=utf-8				" encoding
@@ -45,7 +50,7 @@ function! s:SID_PREFIX()
   endfunction
 
 " Set tabline.
-function! s:my_tabline()  "{{{
+function! s:my_tabline()
   let s = ''
   for i in range(1, tabpagenr('$'))
     let bufnrs = tabpagebuflist(i)
@@ -62,7 +67,7 @@ function! s:my_tabline()  "{{{
   endfor
   let s .= '%#TabLineFill#%T%=%#TabLine#'
   return s
-endfunction "}}}
+endfunction
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2 " 常にタブラインを表示
 
@@ -144,20 +149,20 @@ NeoBundleCheck
 " configure vim-indent-guides
 "================================================
 "{{{
-""" vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
-"let g:indent_guides_enable_on_vim_startup=1
-"" ガイドをスタートするインデントの量
-"let g:indent_guides_start_level=2
-"" 自動カラーを無効にする
-"let g:indent_guides_auto_colors=0
-"" 奇数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
-"" 偶数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
-"" ハイライト色の変化の幅
-"let g:indent_guides_color_change_percent = 30
-"" ガイドの幅
-"let g:indent_guides_guide_size = 1
+" vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
+let g:indent_guides_enable_on_vim_startup=1
+" ガイドをスタートするインデントの量
+let g:indent_guides_start_level=1
+" 自動カラー(0:disable, 1:enable)
+let g:indent_guides_auto_colors=1
+" 奇数インデントのカラー
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
+" 偶数インデントのカラー
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
+" ハイライト色の変化の幅
+let g:indent_guides_color_change_percent = 30
+" ガイドの幅
+let g:indent_guides_guide_size = 1
 "}}}
 
 "================================================
