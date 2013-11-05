@@ -125,7 +125,7 @@ NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
 NeoBundle 'rails.vim'
 " Non github repos
-NeoBundle 'git://git.wincent.com/command-t.git'
+"NeoBundle 'git://git.wincent.com/command-t.git'
 " gist repos
 "NeoBundle 'gist:Shougo/656148', {
 "      \ 'name': 'everything.vim',
