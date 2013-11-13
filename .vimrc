@@ -8,7 +8,7 @@ let g:molokai_original=1
 let g:rehash256=1
 set background=dark
 
-set foldmethod=marker           " マーカーに囲まれた部分を折り畳む
+"set foldmethod=marker           " マーカーに囲まれた部分を折り畳む
 set mouse=						" mouseの連動機能を無効にする
 set encoding=utf-8				" encoding
 set autoindent					"新しい行のインデントを現在行と同じにする
