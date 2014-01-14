@@ -34,7 +34,7 @@ set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f " grep検索を設定する
 set grepprg=grep\ -nh
 set wildmenu                   " コマンドラインモードの補完を便利にする
 set wildmode=longest:full,full
-
+set hlsearch
 
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
@@ -144,6 +144,11 @@ filetype plugin indent on     " Required!
 " Installation check.
 NeoBundleCheck
 "}}}
+
+"================================================
+" configure vim-quickrun
+"================================================
+let g:quickrun_config={'*': {'split': ''}}
 
 "================================================
 " configure vim-indent-guides
