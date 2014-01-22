@@ -133,6 +133,7 @@ NeoBundle 'rails.vim'
 " Non git repos
 NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
 "NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
+NeoBundle 'rking/ag.vim'
 
 filetype plugin indent on     " Required!
 "
