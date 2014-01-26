@@ -2,11 +2,12 @@
 " basic settings
 "================================================
 "{{{
+set t_Co=256
 colorscheme molokai
 syntax on						" syntax word color
 let g:molokai_original=1
 let g:rehash256=1
-set background=dark
+"set background=dark
 
 "set foldmethod=marker           " マーカーに囲まれた部分を折り畳む
 set mouse=a						" mouseの連動機能を有効にする
@@ -134,6 +135,7 @@ NeoBundle 'rails.vim'
 NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
 "NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
 NeoBundle 'rking/ag.vim'
+NeoBundle 'Lokaltog/vim-powerline'
 
 filetype plugin indent on     " Required!
 "
@@ -145,6 +147,11 @@ filetype plugin indent on     " Required!
 " Installation check.
 NeoBundleCheck
 "}}}
+
+"================================================
+" configure vim-powerline
+"================================================
+let g:Powerline_symbols = 'fancy'
 
 "================================================
 " configure vim-quickrun
