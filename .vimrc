@@ -9,7 +9,7 @@ let g:rehash256=1
 set background=dark
 
 "set foldmethod=marker           " マーカーに囲まれた部分を折り畳む
-set mouse=						" mouseの連動機能を無効にする
+set mouse=a						" mouseの連動機能を有効にする
 set encoding=utf-8				" encoding
 set autoindent					"新しい行のインデントを現在行と同じにする
 set backupdir=$HOME/.vimbackup	"バックアップファイルのディレクトリを指定する
