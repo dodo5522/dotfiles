@@ -136,6 +136,7 @@ NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
 "NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'open-browser.vim'
 
 filetype plugin indent on     " Required!
 "
