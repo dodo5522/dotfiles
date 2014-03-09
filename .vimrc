@@ -138,6 +138,7 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'open-browser.vim'
 
+filetype on
 filetype plugin indent on     " Required!
 "
 " Brief help
@@ -157,7 +158,13 @@ let g:Powerline_symbols = 'fancy'
 "================================================
 " configure vim-quickrun
 "================================================
+let g:quickrun_config = {}
 let g:quickrun_config={'*': {'split': ''}}
+let g:quickrun_config['markdown'] = {
+	\ 'type': 'markdown/pandoc',
+	\ 'outputter': 'browser',
+	\ 'cmdopt': '-s'
+	\ }
 
 "================================================
 " configure vim-indent-guides
