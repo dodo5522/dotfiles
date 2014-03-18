@@ -137,6 +137,7 @@ NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'open-browser.vim'
+NeoBundle 'kana/vim-submode'
 
 filetype on
 filetype plugin indent on     " Required!
@@ -149,6 +150,31 @@ filetype plugin indent on     " Required!
 " Installation check.
 NeoBundleCheck
 "}}}
+
+"================================================
+" configure submode
+"================================================
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap sq :<C-u>q<CR>
+
+call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+call submode#map('bufmove', 'n', '', '<', '<C-w><')
+call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 "================================================
 " configure vim-powerline
