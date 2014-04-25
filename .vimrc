@@ -9,6 +9,7 @@ let g:molokai_original=1
 let g:rehash256=1
 "set background=dark
 
+set noic						"大文字小文字を区別する
 "set foldmethod=marker           " マーカーに囲まれた部分を折り畳む
 set mouse=a						" mouseの連動機能を有効にする
 set encoding=utf-8				" encoding
