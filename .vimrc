@@ -120,7 +120,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle 'Lokaltog/vim-easymotion', '09c0cea8'   " This plugin is locked at revision 09c0cea8 
-NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 NeoBundle 'thinca/vim-quickrun'
 " vim-scripts repos
 NeoBundle 'L9'
@@ -136,9 +136,9 @@ NeoBundle 'rails.vim'
 NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
 "NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
 NeoBundle 'rking/ag.vim'
-NeoBundle 'Lokaltog/vim-powerline'
+"NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'open-browser.vim'
-NeoBundle 'kana/vim-submode'
+"NeoBundle 'kana/vim-submode'
 
 filetype on
 filetype plugin indent on     " Required!
@@ -180,7 +180,7 @@ NeoBundleCheck
 "================================================
 " configure vim-powerline
 "================================================
-let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'fancy'
 
 "================================================
 " configure vim-quickrun
