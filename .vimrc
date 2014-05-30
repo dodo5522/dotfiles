@@ -119,7 +119,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 " Original repos on github
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails.git'
-NeoBundle 'Lokaltog/vim-easymotion', '09c0cea8'   " This plugin is locked at revision 09c0cea8 
+NeoBundle 'Lokaltog/vim-easymotion'
 "NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 NeoBundle 'thinca/vim-quickrun'
 " vim-scripts repos
