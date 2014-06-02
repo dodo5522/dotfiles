@@ -140,6 +140,13 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'open-browser.vim'
 "NeoBundle 'kana/vim-submode'
 
+" For evaluation of C/C++ code
+NeoBundle 'http://github.com/vim-scripts/Trinity'
+NeoBundle 'vim-scripts/trinity.vim'
+NeoBundle 'vim-scripts/SrcExpl'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'taglist.vim'
+
 filetype on
 filetype plugin indent on     " Required!
 "
