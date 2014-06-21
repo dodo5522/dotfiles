@@ -160,29 +160,25 @@ NeoBundleCheck
 "}}}
 
 "================================================
-" configure submode
+" replace grep as ag
 "================================================
-"nnoremap s <Nop>
-"nnoremap sj <C-w>j
-"nnoremap sk <C-w>k
-"nnoremap sl <C-w>l
-"nnoremap sh <C-w>h
-"nnoremap sJ <C-w>J
-"nnoremap sK <C-w>K
-"nnoremap sL <C-w>L
-"nnoremap sH <C-w>H
-"nnoremap ss :<C-u>sp<CR>
-"nnoremap sv :<C-u>vs<CR>
-"nnoremap sq :<C-u>q<CR>
-"
-"call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
-"call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
-"call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
-"call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
-"call submode#map('bufmove', 'n', '', '>', '<C-w>>')
-"call submode#map('bufmove', 'n', '', '<', '<C-w><')
-"call submode#map('bufmove', 'n', '', '+', '<C-w>+')
-"call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+"{{{
+" grep検索
+nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+
+" カーソル位置の単語をgrep検索
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+
+" grep検索結果の再呼出
+nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
+
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+let g:unite_source_grep_recursive_opt = ''
+endif
+"}}}
 
 "================================================
 " configure vim-powerline
