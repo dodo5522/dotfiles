@@ -184,7 +184,7 @@ endif
 " add alias to replace keyword
 "================================================
 "{{{
-" c*でカーソル下のキーワードを置換
+" ,sでカーソル下のキーワードを置換
 nnoremap <expr> ,s ':%s ;\<' . expand('<cword>') . '\>;'
 vnoremap <expr> ,s ':s ;\<' . expand('<cword>') . '\>;'
 " }}}
