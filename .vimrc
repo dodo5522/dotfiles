@@ -10,8 +10,8 @@ let g:rehash256=1
 "set background=dark
 
 set noic						"大文字小文字を区別する
-"set foldmethod=marker           " マーカーに囲まれた部分を折り畳む
-set mouse=a						" mouseの連動機能を有効にする
+"set foldmethod=marker			" マーカーに囲まれた部分を折り畳む
+"set mouse=a					" mouseの連動機能を有効にする
 set encoding=utf-8				" encoding
 set autoindent					"新しい行のインデントを現在行と同じにする
 set backupdir=$HOME/.vimbackup	"バックアップファイルのディレクトリを指定する
@@ -179,6 +179,15 @@ let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
 let g:unite_source_grep_recursive_opt = ''
 endif
 "}}}
+
+"================================================
+" add alias to replace keyword
+"================================================
+"{{{
+" c*でカーソル下のキーワードを置換
+nnoremap <expr> ,s ':%s ;\<' . expand('<cword>') . '\>;'
+vnoremap <expr> ,s ':s ;\<' . expand('<cword>') . '\>;'
+" }}}
 
 "================================================
 " configure vim-powerline
