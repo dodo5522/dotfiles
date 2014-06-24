@@ -3,6 +3,7 @@
 	email = dodo5522@gmail.com
 [core]
 	excludesfile = /Users/takashi/.gitignore_global
+	editor = vim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
