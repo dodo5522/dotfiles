@@ -146,6 +146,7 @@ NeoBundle 'vim-scripts/trinity.vim'
 NeoBundle 'vim-scripts/SrcExpl'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'taglist.vim'
+NeoBundle 'scrooloose/syntastic'
 
 filetype on
 filetype plugin indent on     " Required!
