@@ -190,6 +190,10 @@ endif
 " ,sでカーソル下のキーワードを置換
 nnoremap <expr> ,s ':%s ;\<' . expand('<cword>') . '\>;'
 vnoremap <expr> ,s ':s ;\<' . expand('<cword>') . '\>;'
+
+" s + <Space> で %s/ に展開されるように設定
+NeoBundle 'osyo-manga/vim-over'
+cnoreabb <silent><expr>s getcmdtype()==':' && getcmdline()=~'^s' ? 'OverCommandLine<CR><C-u>%s/<C-r>=get([], getchar(0), '')<CR>' : 's'
 " }}}
 
 "================================================
