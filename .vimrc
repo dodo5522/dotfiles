@@ -9,8 +9,7 @@ let g:molokai_original=1
 let g:rehash256=1
 "set background=dark
 
-"set paste
-""ペーストする時にインデントさせない(neocomplecacheが効かなくなる)
+set pastetoggle=<F12>           "set pasteはどんなキーマップもプラグインも動作できなくなるので、これで代用する
 set noic						"大文字小文字を区別する
 "set foldmethod=marker			" マーカーに囲まれた部分を折り畳む
 "set mouse=a					" mouseの連動機能を有効にする
@@ -148,6 +147,8 @@ NeoBundle 'vim-scripts/trinity.vim'
 NeoBundle 'vim-scripts/SrcExpl'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'taglist.vim'
+
+" code syntax checker
 NeoBundle 'scrooloose/syntastic'
 
 filetype on
