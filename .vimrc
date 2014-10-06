@@ -185,6 +185,16 @@ endif
 "}}}
 
 "================================================
+" vimgrep key short cut
+"================================================
+"{{{
+nnoremap [q :cprevious<CR>   " 前へ
+nnoremap ]q :cnext<CR>       " 次へ
+nnoremap [Q :<C-u>cfirst<CR> " 最初へ
+nnoremap ]Q :<C-u>clast<CR>  " 最後へ
+"}}}
+
+"================================================
 " add alias to replace keyword
 "================================================
 "{{{
