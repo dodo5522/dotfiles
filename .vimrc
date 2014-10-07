@@ -19,7 +19,7 @@ set backupdir=$HOME/.vimbackup	"バックアップファイルのディレクト
 set clipboard=unnamed			"クリップボードをWindowsと連携する
 set nocompatible				"vi互換をオフする
 set directory=$HOME/.vimbackup	"スワップファイル用のディレクトリを指定する
-set expandtab					"タブの代わりに空白文字を指定する
+"set expandtab					"タブの代わりに空白文字を指定する
 set hidden						"変更中のファイルでも、保存しないで他のファイルを表示する
 set incsearch					"インクリメンタルサーチを行う
 set number						"行番号を表示する
@@ -151,6 +151,9 @@ NeoBundle 'taglist.vim'
 " code syntax checker
 NeoBundle 'scrooloose/syntastic'
 
+" plantuml syntax
+NeoBundle 'aklt/plantuml-syntax'
+
 filetype on
 filetype plugin indent on     " Required!
 "
@@ -161,6 +164,13 @@ filetype plugin indent on     " Required!
 
 " Installation check.
 NeoBundleCheck
+"}}}
+
+"================================================
+" plantuml-syntax
+"================================================
+"{{{
+let g:plantuml_executable_script=''
 "}}}
 
 "================================================
