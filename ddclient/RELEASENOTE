@@ -1,0 +1,10 @@
+Once again it has been to before releasing a new version of ddclient.  This
+version has some minor changes which are all logged in the ChangeLog file.
+
+	* Fixing #28: FreeDNS.afraid.org changed api slightly
+	* Added dtdns-support
+	* Added support for longer password
+	* Added cisco-asa patch
+	* Added support for LoopiaDNS
+
+Hopefully we will be able to release the next version of ddclient much sooner.
