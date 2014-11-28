@@ -9,6 +9,8 @@ let g:molokai_original=1
 let g:rehash256=1
 "set background=dark
 
+set laststatus=2
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set pastetoggle=<F12>           "set pasteはどんなキーマップもプラグインも動作できなくなるので、これで代用する
 set noic						"大文字小文字を区別する
 "set foldmethod=marker			" マーカーに囲まれた部分を折り畳む
@@ -32,7 +34,6 @@ set ignorecase					"文字列検索時に大文字小文字の区別をしない
 set smartcase					"大文字で検索されたら対象を大文字限定にする
 set ruler						"今何行目? 何文字目? をステータスバーに表示してくれる
 "set whichwrap=b,s,[,],<,>,~	"行の先頭から前の行の末尾に、行の末尾から次の行の先頭に行く
-set laststatus=3
 set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f " grep検索を設定する
 set grepprg=grep\ -nh
 set wildmenu                   " コマンドラインモードの補完を便利にする
