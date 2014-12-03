@@ -233,6 +233,11 @@ let g:quickrun_config['markdown'] = {
 	\ 'outputter': 'browser',
 	\ 'cmdopt': '-s'
 	\ }
+let g:quickrun_config['pytest3'] = {
+	\ 'command': 'py.test-3',
+	\ 'cmdopt': '-s -v',
+	\ 'hook/shebang/enable': 0,
+	\ }
 
 "================================================
 " configure vim-indent-guides
