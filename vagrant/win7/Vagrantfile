@@ -16,4 +16,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Port forward WinRM and RDP
     config.vm.network :forwarded_port, guest: 3389, host: 3389
     config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+
+    # Local networking
+    config.vm.provider :virtualbox do |vb|
+        vb.customize ["modifyvm", :id, "--nic2", "bridged"]
+        vb.customize ["modifyvm", :id, "--nictype2", "82540EM"]
+        vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
+        vb.customize ["modifyvm", :id, "--cableconnected2", "on"]
+        vb.customize ["modifyvm", :id, "--bridgeadapter2", "eth0"]
+    end
 end
