@@ -1,0 +1,19 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    # Configure base box parameters
+    config.vm.box = "vagrant-windows7sp1"
+    config.vm.box_url = "/mnt/local/need_backup/software/box/espress_win7_20141223.box"
+    config.vm.guest = :windows
+
+    # Ensure that all networks are set to private
+    config.windows.set_work_network = true
+
+    # Port forward WinRM and RDP
+    config.vm.network :forwarded_port, guest: 3389, host: 3389
+    config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+end
