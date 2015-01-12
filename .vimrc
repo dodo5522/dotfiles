@@ -294,3 +294,10 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 "}}}
 
+"================================================
+" insert the template of new created file
+"================================================
+"{{{
+autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
+"}}}
+
