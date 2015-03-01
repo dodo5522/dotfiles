@@ -147,7 +147,7 @@ NeoBundle 'http://github.com/vim-scripts/Trinity'
 NeoBundle 'vim-scripts/trinity.vim'
 NeoBundle 'vim-scripts/SrcExpl'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'taglist.vim'
+"NeoBundle 'taglist.vim'
 
 " code syntax checker
 NeoBundle 'scrooloose/syntastic'
