@@ -153,7 +153,6 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Flake8-vim'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'hynek/vim-python-pep8-indent'
-NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'scrooloose/syntastic'
 
 " plantuml syntax
@@ -181,16 +180,16 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" pyflakes for python
+let g:PyFlakeOnWrite = 1
+let g:PyFlakeCheckers = 'pep8,mccabe,pyflakes'
+let g:PyFlakeDefaultComplexity=10
+" syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_python_python_exec = 'python3'
-" pyflakes for python
-let g:PyFlakeOnWrite = 1
-let g:PyFlakeCheckers = 'pep8,mccabe,pyflakes'
-let g:PyFlakeDefaultComplexity=10
-" syntastic for pylakes
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 "}}}
 
