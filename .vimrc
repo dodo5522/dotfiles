@@ -154,6 +154,7 @@ NeoBundle 'Flake8-vim'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'hynek/vim-python-pep8-indent'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Chiel92/vim-autoformat'
 
 " plantuml syntax
 NeoBundle 'aklt/plantuml-syntax'
@@ -325,5 +326,6 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 "================================================
 "{{{
 autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
+autocmd BufNewFile *.md 0r $HOME/.vim/template/markdown.txt
 "}}}
 
