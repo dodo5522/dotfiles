@@ -84,14 +84,14 @@ for n in range(1, 9)
 endfor
 " t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
 
-map <silent> [Tag]c :tablast <bar> tabnew<CR>
 " tc 新しいタブを一番右に作る
-map <silent> [Tag]x :tabclose<CR>
+map <silent> [Tag]c :tablast <bar> tabnew<CR>
 " tx タブを閉じる
-map <silent> [Tag]n :tabnext<CR>
+map <silent> [Tag]x :tabclose<CR>
 " tn 次のタブ
-map <silent> [Tag]p :tabprevious<CR>
+map <silent> [Tag]n :tabnext<CR>
 " tn 前のタブ
+map <silent> [Tag]p :tabprevious<CR>
 "}}}
 
 "================================================
@@ -122,22 +122,13 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle 'Lokaltog/vim-easymotion'
-"NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 NeoBundle 'thinca/vim-quickrun'
 " vim-scripts repos
 NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
 NeoBundle 'rails.vim'
-" Non github repos
-"NeoBundle 'git://git.wincent.com/command-t.git'
-" gist repos
-"NeoBundle 'gist:Shougo/656148', {
-"      \ 'name': 'everything.vim',
-"      \ 'script_type': 'plugin'}
-" Non git repos
 NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
 "NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
-NeoBundle 'rking/ag.vim'
 "NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'open-browser.vim'
 "NeoBundle 'kana/vim-submode'
@@ -202,47 +193,18 @@ let g:plantuml_executable_script=''
 "}}}
 
 "================================================
-" replace grep as ag
-"================================================
-"{{{
-" grep検索
-nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-
-" カーソル位置の単語をgrep検索
-nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
-
-" grep検索結果の再呼出
-nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
-
-" unite grep に ag(The Silver Searcher) を使う
-if executable('ag')
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-let g:unite_source_grep_recursive_opt = ''
-endif
-"}}}
-
-"================================================
-" vimgrep key short cut
-"================================================
-"{{{
-nnoremap [q :cprevious<CR>   " 前へ
-nnoremap ]q :cnext<CR>       " 次へ
-nnoremap [Q :<C-u>cfirst<CR> " 最初へ
-nnoremap ]Q :<C-u>clast<CR>  " 最後へ
-"}}}
-
-"================================================
-" add alias to replace keyword
+" add aliases
 "================================================
 "{{{
 " ,sでカーソル下のキーワードを置換
 nnoremap <expr> ,s ':%s ;\<' . expand('<cword>') . '\>;'
 vnoremap <expr> ,s ':s ;\<' . expand('<cword>') . '\>;'
-
-" s + <Space> で %s/ に展開されるように設定
-NeoBundle 'osyo-manga/vim-over'
-cnoreabb <silent><expr>s getcmdtype()==':' && getcmdline()=~'^s' ? 'OverCommandLine<CR><C-u>%s/<C-r>=get([], getchar(0), '')<CR>' : 's'
+" grep検索
+nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+" カーソル位置の単語をgrep検索
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+" grep検索結果の再呼出
+nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 " }}}
 
 "================================================
