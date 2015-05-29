@@ -138,6 +138,7 @@ NeoBundle 'http://github.com/vim-scripts/Trinity'
 NeoBundle 'vim-scripts/trinity.vim'
 NeoBundle 'vim-scripts/SrcExpl'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle '5t111111/alt-gtags.vim'
 "NeoBundle 'taglist.vim'
 
 " code syntax checker
@@ -162,6 +163,19 @@ filetype plugin indent on     " Required!
 
 " Installation check.
 NeoBundleCheck
+"}}}
+
+"================================================
+" gtags
+"================================================
+"{{{
+" QuickFix
+map <C-n> :cn<CR>
+map <C-p> :cp<CR>
+" alt-gtags.vim
+nnoremap <C-j> :AltGtags<CR>
+nnoremap <C-k> :AltGtags -r<CR>
+nnoremap <C-l> :AltGtags -s<CR>
 "}}}
 
 "================================================
