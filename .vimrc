@@ -279,6 +279,8 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_dictionary_filetype_lists = {
    \ 'default' : ''
    \ }
+" 補完候補の一番先頭を無選択状態にする
+let g:neocomplcache_enable_auto_select = 0
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
