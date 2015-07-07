@@ -39,6 +39,7 @@ set grepprg=grep\ -nh
 set wildmenu                   " コマンドラインモードの補完を便利にする
 set wildmode=longest:full,full
 set hlsearch
+set tags=./tags
 
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
@@ -166,19 +167,6 @@ NeoBundleCheck
 "}}}
 
 "================================================
-" gtags
-"================================================
-"{{{
-" QuickFix
-map <C-n> :cn<CR>
-map <C-p> :cp<CR>
-" alt-gtags.vim
-nnoremap <C-j> :AltGtags<CR>
-nnoremap <C-k> :AltGtags -r<CR>
-nnoremap <C-l> :AltGtags -s<CR>
-"}}}
-
-"================================================
 " syntastic configuration
 "================================================
 "{{{
@@ -197,6 +185,8 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+let g:syntastic_c_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
+let g:syntastic_cpp_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
 "}}}
 
 "================================================
