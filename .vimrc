@@ -183,8 +183,23 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
-let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python2_python_exe = 'python'
+let g:syntastic_python3_python_exe = 'python3'
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+
+function! Parse_Python_Shebang()                    
+    let line = getline(1)                           
+    if line =~# '\m^#!\s*[^ \t]*\<python3\>'    
+        let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
+    else                                            
+        let g:syntastic_python_python_exec = g:syntastic_python2_python_exe
+    endif                                           
+endfunction                                         
+
+command! SyntasticPython2 let g:syntastic_python_python_exec = g:syntastic_python2_python_exe
+command! SyntasticPython3 let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
+autocmd BufWinEnter *.py call Parse_Python_Shebang()
+" java related
 let g:syntastic_c_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
 let g:syntastic_cpp_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
 "}}}
