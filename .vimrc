@@ -316,5 +316,6 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 "{{{
 autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
 autocmd BufNewFile *.md 0r $HOME/.vim/template/markdown.txt
+autocmd BufNewFile *.uml 0r $HOME/.vim/template/plantuml.txt
 "}}}
 
