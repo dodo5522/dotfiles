@@ -143,7 +143,6 @@ NeoBundle '5t111111/alt-gtags.vim'
 NeoBundle 'taglist.vim'
 
 " code syntax checker
-NeoBundle 'Flake8-vim'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'hynek/vim-python-pep8-indent'
 NeoBundle 'scrooloose/syntastic'
@@ -174,10 +173,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" pyflakes for python
-let g:PyFlakeOnWrite = 1
-let g:PyFlakeCheckers = 'pep8,mccabe,pyflakes'
-let g:PyFlakeDefaultComplexity=10
 " syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -188,12 +183,18 @@ let g:syntastic_python3_python_exe = 'python3'
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 
 function! Parse_Python_Shebang()                    
-    let line = getline(1)                           
-    if line =~# '\m^#!\s*[^ \t]*\<python3\>'    
-        let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
-    else                                            
+    let line = getline(1)
+    if line =~# '\m^#!\s*[^ \t]*\<python2\=\>'
         let g:syntastic_python_python_exec = g:syntastic_python2_python_exe
-    endif                                           
+    elseif line =~# '\m^#!\s*[^ \t]*\<env\>\s*\<python2>'
+        let g:syntastic_python_python_exec = g:syntastic_python2_python_exe
+    elseif line =~# '\m^#!\s*[^ \t]*\<python3\>'
+        let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
+    elseif line =~# '\m^#!\s*[^ \t]*\<env\>\s*\<python3\>'
+        let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
+    else
+        let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
+    endif
 endfunction                                         
 
 command! SyntasticPython2 let g:syntastic_python_python_exec = g:syntastic_python2_python_exe
@@ -215,15 +216,18 @@ let g:plantuml_executable_script=''
 " add aliases
 "================================================
 "{{{
-" ,sでカーソル下のキーワードを置換
-nnoremap <expr> ,s ':%s ;\<' . expand('<cword>') . '\>;'
-vnoremap <expr> ,s ':s ;\<' . expand('<cword>') . '\>;'
+nnoremap [unite] <Nop>
+nmap , [unite]
+" filer
+nnoremap <silent> [unite]f  :<C-u>Unite<space>file<cr>
+nnoremap <silent> [unite]b  :<C-u>Unite<space>buffer<cr>
+nnoremap <silent> [unite]fb :<C-u>Unite<space>file buffer<cr>
 " grep検索
-nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 " カーソル位置の単語をgrep検索
-nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+nnoremap <silent> [unite]cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
 " grep検索結果の再呼出
-nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
+nnoremap <silent> [unite]r  :<C-u>UniteResume search-buffer<CR>
 " unite grep に ag(The Silver Searcher) を使う
 if executable('ag')
     let g:unite_source_grep_command = 'ag'
