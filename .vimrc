@@ -143,8 +143,6 @@ NeoBundle '5t111111/alt-gtags.vim'
 NeoBundle 'taglist.vim'
 
 " code syntax checker
-NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'hynek/vim-python-pep8-indent'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Chiel92/vim-autoformat'
 
