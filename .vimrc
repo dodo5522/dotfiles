@@ -179,7 +179,7 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_python2_python_exe = 'python'
 let g:syntastic_python3_python_exe = 'python3'
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_checker_args = '--ignore=E501,W601'
+let g:syntastic_python_flake8_args = '--ignore=E501,W601'
 
 function! Parse_Python_Shebang()                    
     let line = getline(1)
