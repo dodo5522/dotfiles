@@ -12,3 +12,9 @@ if [ -d $HOME/.anyenv ]; then
         export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
     done
 fi
+
+if [ "$(uname)" = 'Darwin' ]; then
+    alias markright="open -a /opt/homebrew-cask/Caskroom/markright/0.1.10/MarkRight.app"
+    alias vim="open -a /usr/local/Cellar/macvim-kaoriya/HEAD/MacVim.app"
+    alias vi="open -a /usr/local/Cellar/macvim-kaoriya/HEAD/MacVim.app"
+fi
