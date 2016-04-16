@@ -39,7 +39,8 @@ set ruler						"今何行目? 何文字目? をステータスバーに表示し
 set wildmenu                   " コマンドラインモードの補完を便利にする
 set wildmode=longest:full,full
 set hlsearch
-set tags=./tags
+set tags+=.svn/tags
+set tags+=.git/tags
 
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
@@ -141,6 +142,7 @@ NeoBundle 'vim-scripts/SrcExpl'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle '5t111111/alt-gtags.vim'
 NeoBundle 'taglist.vim'
+NeoBundle 'soramugi/auto-ctags.vim'
 
 " code syntax checker
 NeoBundle 'scrooloose/syntastic'
@@ -161,6 +163,19 @@ filetype plugin indent on     " Required!
 
 " Installation check.
 NeoBundleCheck
+"}}}
+
+"================================================
+" tag related configuration
+"================================================
+"{{{
+let g:auto_ctags = 1
+let g:auto_ctags_directory_list = ['.git', '.svn']
+let g:auto_ctags_tags_name = 'tags'
+let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
+let g:auto_ctags_filetype_mode = 1
+nnoremap <C-k> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <C-h> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 "}}}
 
 "================================================
