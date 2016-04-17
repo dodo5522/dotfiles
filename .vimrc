@@ -141,7 +141,7 @@ NeoBundle 'vim-scripts/trinity.vim'
 NeoBundle 'vim-scripts/SrcExpl'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle '5t111111/alt-gtags.vim'
-NeoBundle 'taglist.vim'
+NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'soramugi/auto-ctags.vim'
 
 " code syntax checker
