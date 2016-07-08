@@ -4,13 +4,10 @@
 """ This module is for... """
 
 __author__ = "Takashi Ando"
-__copyright__ = "Copyright 2015, My own project"
-__credits__ = ["My wife"]
-__license__ = "GPL"
+__copyright__ = "(c) 2016"
+__credits__ = [""]
+__license__ = "Apache lisence"
 __version__ = "1.0.0"
-__maintainer__ = "Takashi Ando"
-__email__ = "noreply@temp.com"
-__status__ = "Production"
 
 if __name__ == "__main__":
     pass
