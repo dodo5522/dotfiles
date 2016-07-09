@@ -1,13 +1,11 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-""" This module is for... """
+""" Base classes of drivers. """
 
 __author__ = "Takashi Ando"
-__copyright__ = "(c) 2016"
-__credits__ = [""]
-__license__ = "Apache lisence"
-__version__ = "1.0.0"
+__license__ = "Apache Lisence Version 2.0"
+__copyright__ = "(c) 2016 Takashi ANdo"
 
 if __name__ == "__main__":
     pass
