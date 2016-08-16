@@ -14,6 +14,16 @@ Foo1 -> Foo5 : To database
 
 ' class diagram
 @startuml
+!define table(x) class x << (T,#FFAAAA) >>
+!define primary_key(x) <u>x</u>
+hide methods
+
+table(geo) {
+    primary_key(ix)
+    longitude
+    latitude
+}
+
 scale 800 width
 Class01 <|-- Class02
 Class03 *-- Class04
