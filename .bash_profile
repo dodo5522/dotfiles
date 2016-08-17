@@ -1,6 +1,7 @@
 PS1="\W $ "
 
 ### Added by the Heroku Toolbelt
+export PATH="/usr/local/linaro/arm-linux-gnueabihf-raspbian/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ### Added by anyenv
