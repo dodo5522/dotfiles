@@ -1,11 +1,16 @@
 ' sequence diagram
 @startuml
 hide footbox
+participant Foo
 actor Foo1
 boundary Foo2
-control Foo3
-entity Foo4
-database Foo5
+
+box "controller" #LightGreen
+    control Foo3
+    entity Foo4
+    database Foo5
+end box
+
 Foo1 -> Foo2 : To boundary
 Foo1 -> Foo3 : To control
 Foo1 -> Foo4 : To entity
@@ -17,6 +22,33 @@ Foo1 -> Foo5 : To database
 !define table(x) class x << (T,#FFAAAA) >>
 !define primary_key(x) <u>x</u>
 hide methods
+
+package event #FFFFFF {
+    class Base {
+    }
+
+    package trigger #FFFFFF {
+        class Queue {
+            #q_
+            +put_q()
+            +join_q()
+        }
+    }
+    package handler #FFFFFF {
+        class Thread {
+            #thread_
+            +start()
+            +stop()
+            +join()
+            #thread_main()
+            #is_condition()
+            #run_in_condition()
+        }
+    }
+
+    Base <|-- Queue
+    Base <|-- Thread
+}
 
 table(geo) {
     primary_key(ix)
