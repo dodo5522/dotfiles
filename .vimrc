@@ -100,6 +100,8 @@ map <silent> [Tag]p :tabprevious<CR>
 " configure neobundle
 "================================================
 "{{{
+let g:neobundle_default_git_protocol='https'
+
 if has('vim_starting')
 set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
