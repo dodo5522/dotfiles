@@ -1,4 +1,4 @@
-PS1="\W $ "
+PS1="\[\e[36m\]\h\[\e[37m\]:\[\e[33m\]\W\[\e[37m\] $ "
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/linaro/arm-linux-gnueabihf-raspbian/bin:$PATH"
