@@ -1,11 +1,6 @@
 "================================================
 " basic settings
 "================================================
-"{{{
-set t_Co=256
-colorscheme molokai
-syntax on						" syntax word color
-let g:molokai_original=1
 let g:rehash256=1
 "set background=dark
 
@@ -14,18 +9,21 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 set pastetoggle=<F12>           "set pasteはどんなキーマップもプラグインも動作できなくなるので、これで代用する
 set noic						"大文字小文字を区別する
 "set foldmethod=marker			" マーカーに囲まれた部分を折り畳む
-"set mouse=a					" mouseの連動機能を有効にする
-set encoding=utf-8				" encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,cp932,euc-jp
+set fileformats=unix,dos,mac
+set ambiwidth=double
 set autoindent					"新しい行のインデントを現在行と同じにする
 set backupdir=$HOME/.vimbackup	"バックアップファイルのディレクトリを指定する
 set clipboard=unnamed			"クリップボードをWindowsと連携する
 set nocompatible				"vi互換をオフする
 set directory=$HOME/.vimbackup	"スワップファイル用のディレクトリを指定する
-set expandtab					"タブの代わりに空白文字を指定する
 set hidden						"変更中のファイルでも、保存しないで他のファイルを表示する
 set incsearch					"インクリメンタルサーチを行う
 set number						"行番号を表示する
 set showmatch					"閉括弧が入力された時、対応する括弧を強調する
+set expandtab					"タブの代わりに空白文字を指定する
 set smarttab					"新しい行を作った時に高度な自動インデントを行う
 set tabstop=4
 set shiftwidth=4
@@ -39,17 +37,53 @@ set ruler						"今何行目? 何文字目? をステータスバーに表示し
 set wildmenu                   " コマンドラインモードの補完を便利にする
 set wildmode=longest:full,full
 set hlsearch
+set cursorline
 set tags+=.svn/tags
 set tags+=.git/tags
 
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
-"}}}
+
+"================================================
+" syntastic
+"================================================
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"================================================
+" 挿入モードでクリップボードからペーストする時に自動でインデントさせないようにする
+"================================================
+if &term =~ "xterm"
+    let &t_SI .= "\e[?2004h"
+    let &t_EI .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
+
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
+
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
+
+"================================================
+" マウスでカーソル移動とスクロール
+"================================================
+if has('mouse')
+    set mouse=a
+    if has('mouse_sgr')
+        set ttymouse=sgr
+    elseif v:version > 703 || v:version is 703 && has('patch632')
+        set ttymouse=sgr
+    else
+        set ttymouse=xterm2
+    endif
+endif
 
 "================================================
 " tab control setting
 "================================================
-"{{{
 " Anywhere SID.
 function! s:SID_PREFIX()
   return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
@@ -94,16 +128,14 @@ map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
 " tn 前のタブ
 map <silent> [Tag]p :tabprevious<CR>
-"}}}
 
 "================================================
 " configure neobundle
 "================================================
-"{{{
 let g:neobundle_default_git_protocol='https'
 
 if has('vim_starting')
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
@@ -120,6 +152,9 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
+" Color scheme
+"NeoBundle 'tomasr/molokai'
+
 " My Bundles here:
 " Note: You don't set neobundle setting in .gvimrc!
 " Original repos on github
@@ -131,14 +166,11 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
 NeoBundle 'rails.vim'
-NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
-"NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
-"NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'open-browser.vim'
 "NeoBundle 'kana/vim-submode'
 
 " For evaluation of C/C++ code
-NeoBundle 'http://github.com/vim-scripts/Trinity'
 NeoBundle 'vim-scripts/trinity.vim'
 NeoBundle 'vim-scripts/SrcExpl'
 NeoBundle 'scrooloose/nerdtree'
@@ -149,8 +181,7 @@ NeoBundle 'soramugi/auto-ctags.vim'
 " code syntax checker
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Chiel92/vim-autoformat'
-
-" plantuml syntax
+"NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'aklt/plantuml-syntax'
 
 call neobundle#end()
@@ -165,20 +196,24 @@ filetype plugin indent on     " Required!
 
 " Installation check.
 NeoBundleCheck
-"}}}
+
+"----------------------------------------------------------
+" molokaiの設定
+"----------------------------------------------------------
+colorscheme molokai
+let g:molokai_original=1
+set t_Co=256    " iTerm2など既に256色環境なら無くても良い
+syntax enable   " 構文に色を付ける
 
 "================================================
-" NERDTree configuration
+" NERDTree
 "================================================
-"{{{
 let g:NERDTreeDirArrows=0
 command Tr NERDTree
-"}}}
 
 "================================================
-" tag related configuration
+" ctags
 "================================================
-"{{{
 let g:auto_ctags = 1
 let g:auto_ctags_directory_list = ['.git', '.svn']
 let g:auto_ctags_tags_name = 'tags'
@@ -186,17 +221,10 @@ let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 let g:auto_ctags_filetype_mode = 1
 nnoremap <C-k> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap <C-h> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
-"}}}
 
 "================================================
-" syntastic configuration
-"================================================
-"{{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 " syntastic
+"================================================
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -227,19 +255,17 @@ autocmd BufWinEnter *.py call Parse_Python_Shebang()
 " java related
 let g:syntastic_c_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
 let g:syntastic_cpp_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
-"}}}
 
 "================================================
 " plantuml-syntax
 "================================================
-"{{{
-let g:plantuml_executable_script=''
-"}}}
+if executable('plantuml')
+    let g:plantuml_executable_script='plantuml'
+endif
 
 "================================================
 " add aliases
 "================================================
-"{{{
 nnoremap [unite] <Nop>
 nmap , [unite]
 " filer
@@ -257,13 +283,15 @@ if executable('ag')
     let g:unite_source_grep_command = 'ag'
     let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
     let g:unite_source_grep_recursive_opt = ''
+elseif executable('hw')
+    let g:unite_source_grep_command = 'hw'
+    let g:unite_source_grep_default_opts = '--no-group --no-color'
+    let g:unite_source_grep_recursive_opt = ''
+elseif executable('grep')
+    let g:unite_source_grep_command = 'grep'
+    let g:unite_source_grep_default_opts = '-nH'
+    let g:unite_source_grep_recursive_opt = '-r'
 endif
-" }}}
-
-"================================================
-" configure vim-powerline
-"================================================
-"let g:Powerline_symbols = 'fancy'
 
 "================================================
 " configure vim-quickrun
@@ -271,20 +299,19 @@ endif
 let g:quickrun_config = {}
 let g:quickrun_config={'*': {'split': ''}}
 let g:quickrun_config['markdown'] = {
-	\ 'type': 'markdown/pandoc',
-	\ 'outputter': 'browser',
-	\ 'cmdopt': '-s'
-	\ }
+    \ 'type': 'markdown/pandoc',
+    \ 'outputter': 'browser',
+    \ 'cmdopt': '-s'
+    \ }
 let g:quickrun_config['pytest3'] = {
-	\ 'command': 'py.test-3',
-	\ 'cmdopt': '-s -v',
-	\ 'hook/shebang/enable': 0,
-	\ }
+    \ 'command': 'py.test-3',
+    \ 'cmdopt': '-s -v',
+    \ 'hook/shebang/enable': 0,
+    \ }
 
 "================================================
 " configure vim-indent-guides
 "================================================
-"{{{
 " vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
 let g:indent_guides_enable_on_vim_startup=1
 " ガイドをスタートするインデントの量
@@ -299,12 +326,10 @@ let g:indent_guides_auto_colors=1
 let g:indent_guides_color_change_percent = 30
 " ガイドの幅
 let g:indent_guides_guide_size = 1
-"}}}
 
 "================================================
 " configure neocomplete
 "================================================
-"{{{
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
@@ -336,14 +361,18 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
-""}}}
+
+"================================================
+" lightline
+"================================================
+let g:lightline = {
+    \ 'colorscheme': 'powerline',
+    \ }
 
 "================================================
 " insert the template of new created file
 "================================================
-"{{{
 autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
 autocmd BufNewFile *.md 0r $HOME/.vim/template/markdown.txt
 autocmd BufNewFile *.uml 0r $HOME/.vim/template/plantuml.txt
-"}}}
 
