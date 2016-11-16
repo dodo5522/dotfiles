@@ -183,6 +183,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Chiel92/vim-autoformat'
 "NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'aklt/plantuml-syntax'
+NeoBundle 'davidhalter/jedi-vim'
 
 call neobundle#end()
 
