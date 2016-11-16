@@ -38,6 +38,7 @@ set wildmenu                   " コマンドラインモードの補完を便�
 set wildmode=longest:full,full
 set hlsearch
 set cursorline
+set backspace=indent,eol,start
 set tags+=.svn/tags
 set tags+=.git/tags
 
