@@ -37,7 +37,7 @@ set ruler						"今何行目? 何文字目? をステータスバーに表示し
 set wildmenu                   " コマンドラインモードの補完を便利にする
 set wildmode=longest:full,full
 set hlsearch
-set cursorline
+"set cursorline                 " これはとても重い
 set backspace=indent,eol,start
 set tags+=.svn/tags
 set tags+=.git/tags
@@ -185,6 +185,9 @@ NeoBundle 'Chiel92/vim-autoformat'
 "NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'davidhalter/jedi-vim'
+
+" Benchmark vimrc
+"NeoBundle 'git://github.com/mattn/benchvimrc-vim.git'
 
 call neobundle#end()
 
