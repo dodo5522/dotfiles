@@ -374,7 +374,9 @@ let g:lightline = {
 "================================================
 " insert the template of new created file
 "================================================
-autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
-autocmd BufNewFile *.md 0r $HOME/.vim/template/markdown.txt
-autocmd BufNewFile *.uml 0r $HOME/.vim/template/plantuml.txt
-
+autocmd BufNewFile *.py 0r $HOME/.vim/template/temp.py
+autocmd BufNewFile *.md 0r $HOME/.vim/template/temp.md
+autocmd BufNewFile *.uml 0r $HOME/.vim/template/temp.uml
+autocmd BufNewFile *.html 0r $HOME/.vim/template/temp.html
+autocmd BufNewFile *.css 0r $HOME/.vim/template/temp.css
+autocmd BufNewFile *.js 0r $HOME/.vim/template/temp.js
