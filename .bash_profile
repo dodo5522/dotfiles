@@ -3,6 +3,7 @@ PS1="\[\e[36m\]\h\[\e[37m\]:\[\e[33m\]\W\[\e[37m\] $ "
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/linaro/arm-linux-gnueabihf-raspbian/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
+export LESS='-g -i -M -R -S -W -z-4 -x4'
 
 ### Added by anyenv
 if [ -d $HOME/.anyenv ]; then
