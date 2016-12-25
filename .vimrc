@@ -186,6 +186,10 @@ NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'davidhalter/jedi-vim'
 
+" For html/css/js
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'ternjs/tern_for_vim'
+
 " Benchmark vimrc
 "NeoBundle 'git://github.com/mattn/benchvimrc-vim.git'
 
