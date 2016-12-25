@@ -37,10 +37,12 @@ set ruler						"今何行目? 何文字目? をステータスバーに表示し
 set wildmenu                   " コマンドラインモードの補完を便利にする
 set wildmode=longest:full,full
 set hlsearch
-"set cursorline                 " これはとても重い
 set backspace=indent,eol,start
 set tags+=.svn/tags
 set tags+=.git/tags
+set nocursorline               " これはとても重いのでNO
+set nocursorcolumn             " これはとても重いのでNO
+set norelativenumber           " これはとても重いのでNO
 
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
@@ -148,8 +150,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-ssh'
-NeoBundle 'Shougo/unite-outline'
+"NeoBundle 'Shougo/unite-ssh'
+"NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
@@ -160,13 +162,13 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 " Note: You don't set neobundle setting in .gvimrc!
 " Original repos on github
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-rails.git'
-NeoBundle 'Lokaltog/vim-easymotion'
+"NeoBundle 'tpope/vim-rails.git'
+"NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'thinca/vim-quickrun'
 " vim-scripts repos
 NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
-NeoBundle 'rails.vim'
+"NeoBundle 'rails.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'open-browser.vim'
 "NeoBundle 'kana/vim-submode'
@@ -181,7 +183,7 @@ NeoBundle 'soramugi/auto-ctags.vim'
 
 " code syntax checker
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Chiel92/vim-autoformat'
+"NeoBundle 'Chiel92/vim-autoformat'
 "NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'davidhalter/jedi-vim'
