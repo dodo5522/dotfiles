@@ -16,5 +16,6 @@ if [ -d $HOME/.anyenv ]; then
 fi
 
 if [ "$(uname)" = 'Darwin' ]; then
+    export PATH="/opt/gcc-arm-none-eabi-4_9-2015q3/bin:$PATH"
     alias markright="open -a /opt/homebrew-cask/Caskroom/markright/0.1.10/MarkRight.app"
 fi
