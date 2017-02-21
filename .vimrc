@@ -43,6 +43,7 @@ set tags+=.git/tags
 set nocursorline               " これはとても重いのでNO
 set nocursorcolumn             " これはとても重いのでNO
 set norelativenumber           " これはとても重いのでNO
+set mouse=
 
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
@@ -190,7 +191,10 @@ NeoBundle 'davidhalter/jedi-vim'
 
 " For html/css/js
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'ternjs/tern_for_vim'
+NeoBundle 'ternjs/tern_for_vim', {
+  \ 'build': {
+  \   'others': 'npm install'
+  \}}
 
 " Benchmark vimrc
 "NeoBundle 'git://github.com/mattn/benchvimrc-vim.git'
@@ -389,3 +393,4 @@ autocmd BufNewFile *.uml 0r $HOME/.vim/template/temp.uml
 autocmd BufNewFile *.html 0r $HOME/.vim/template/temp.html
 autocmd BufNewFile *.css 0r $HOME/.vim/template/temp.css
 autocmd BufNewFile *.js 0r $HOME/.vim/template/temp.js
+autocmd BufNewFile *.er 0r $HOME/.vim/template/temp.er
