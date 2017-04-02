@@ -163,6 +163,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 " Note: You don't set neobundle setting in .gvimrc!
 " Original repos on github
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
 "NeoBundle 'tpope/vim-rails.git'
 "NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'thinca/vim-quickrun'
@@ -211,6 +212,11 @@ filetype plugin indent on     " Required!
 
 " Installation check.
 NeoBundleCheck
+
+"----------------------------------------------------------
+" 起動時に行ハイライトを有効にしたい
+"----------------------------------------------------------
+let g:gitgutter_highlight_lines = 1
 
 "----------------------------------------------------------
 " molokaiの設定
@@ -392,5 +398,4 @@ autocmd BufNewFile *.md 0r $HOME/.vim/template/temp.md
 autocmd BufNewFile *.uml 0r $HOME/.vim/template/temp.uml
 autocmd BufNewFile *.html 0r $HOME/.vim/template/temp.html
 autocmd BufNewFile *.css 0r $HOME/.vim/template/temp.css
-autocmd BufNewFile *.js 0r $HOME/.vim/template/temp.js
 autocmd BufNewFile *.er 0r $HOME/.vim/template/temp.er
