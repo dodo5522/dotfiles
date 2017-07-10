@@ -190,7 +190,9 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'davidhalter/jedi-vim'
 
-" For html/css/js
+" For html/css/js/typescript
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'Quramy/tsuquyomi'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'ternjs/tern_for_vim', {
   \ 'build': {
