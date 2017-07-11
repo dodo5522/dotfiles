@@ -1,3 +1,33 @@
+' activity diagram
+@startuml{plantuml_act_sample.png}
+title <size:18>アクティビティ図のサンプル</size>
+
+(*) --> "目覚ましを止める"
+
+if "体調状態" then
+    partition "出勤準備"
+        --> [健康] "顔を洗う" as wash
+    end partition
+else
+    -> [病気] "病気の報告"
+    --> "寝る"
+endif
+
+partition "出勤準備" {
+    wash --> ===fork===
+
+    ===fork=== --> "新聞を読む"
+    --> ===join===
+
+    ===fork=== --> "歯を磨く"
+    --> ===join===
+
+    ===join=== --> "服を着替える"
+}
+-->(*)
+note right : 家を出る
+@enduml
+
 ' sequence diagram
 @startuml
 hide footbox
