@@ -1,31 +1,37 @@
 ' activity diagram
-@startuml{plantuml_act_sample.png}
-title <size:18>アクティビティ図のサンプル</size>
-
-(*) --> "目覚ましを止める"
-
-if "体調状態" then
-    partition "出勤準備"
-        --> [健康] "顔を洗う" as wash
-    end partition
-else
-    -> [病気] "病気の報告"
-    --> "寝る"
+@startuml
+start
+:ClickServlet.handleRequest();
+:new page;
+if (Page.onSecurityCheck) then (true)
+  :Page.onInit();
+  if (isForward?) then (no)
+    :Process controls;
+    if (continue processing?) then (no)
+      stop
+    endif
+    
+    if (isPost?) then (yes)
+      :Page.onPost();
+    else (no)
+      :Page.onGet();
+    endif
+    :Page.onRender();
+  endif
+else (false)
 endif
 
-partition "出勤準備" {
-    wash --> ===fork===
+if (do redirect?) then (yes)
+  :redirect process;
+else
+  if (do forward?) then (yes)
+    :Forward request;
+  else (no)
+    :Render page template;
+  endif
+endif
 
-    ===fork=== --> "新聞を読む"
-    --> ===join===
-
-    ===fork=== --> "歯を磨く"
-    --> ===join===
-
-    ===join=== --> "服を着替える"
-}
--->(*)
-note right : 家を出る
+stop
 @enduml
 
 ' sequence diagram
