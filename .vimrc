@@ -188,7 +188,8 @@ NeoBundle 'scrooloose/syntastic'
 "NeoBundle 'Chiel92/vim-autoformat'
 "NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'aklt/plantuml-syntax'
-NeoBundle 'davidhalter/jedi-vim'
+"NeoBundle 'davidhalter/jedi-vim'
+NeoBundle "sudar/vim-arduino-syntax"
 
 " For html/css/js/typescript
 NeoBundle 'leafgarland/typescript-vim'
