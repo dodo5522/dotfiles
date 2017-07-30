@@ -18,4 +18,8 @@ fi
 if [ "$(uname)" = 'Darwin' ]; then
     export PATH="/opt/gcc-arm-none-eabi-4_9-2015q3/bin:$PATH"
     alias markright="open -a /opt/homebrew-cask/Caskroom/markright/0.1.10/MarkRight.app"
+
+    export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
+    export ARDMK_DIR=${HOME}/Development/Arduino-Makefile
+    export AVR_TOOLS_DIR=/Applications/Arduino.app/Contents/Java/hardware/tools/avr
 fi
