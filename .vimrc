@@ -189,16 +189,14 @@ NeoBundle 'scrooloose/syntastic'
 "NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'aklt/plantuml-syntax'
 "NeoBundle 'davidhalter/jedi-vim'
-NeoBundle "sudar/vim-arduino-syntax"
 
 " For html/css/js/typescript
-NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'Quramy/tsuquyomi'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'ternjs/tern_for_vim', {
-  \ 'build': {
-  \   'others': 'npm install'
-  \}}
+NeoBundle 'ternjs/tern_for_vim', {'build': {'others': 'npm install'}}
+NeoBundleLazy 'heavenshell/vim-jsdoc' , {'autoload': {'filetypes': ['javascript']}}
+NeoBundleLazy 'leafgarland/typescript-vim' , {'autoload': {'filetypes': ['javascript']}}
+NeoBundleLazy 'myhere/vim-nodejs-complete' , {'autoload': {'filetypes': ['javascript']}}
 
 " Benchmark vimrc
 "NeoBundle 'git://github.com/mattn/benchvimrc-vim.git'
@@ -249,10 +247,11 @@ nnoremap <C-h> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 "================================================
 " syntastic
 "================================================
+let g:syntastic_check_on_open = 0            " ファイルを開いたときはチェックしない
+let g:syntastic_check_on_wq = 0              " wpではチェックしない
+let g:syntastic_auto_loc_list = 1            " error時は自動でロケーションリストを開く
+let g:syntastic_loc_list_height=5            " error表示ウィンドウの高さ
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
 let g:syntastic_python2_python_exe = 'python'
 let g:syntastic_python3_python_exe = 'python3'
 let g:syntastic_python_checkers = ['flake8']
@@ -276,9 +275,18 @@ endfunction
 command! SyntasticPython2 let g:syntastic_python_python_exec = g:syntastic_python2_python_exe
 command! SyntasticPython3 let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
 autocmd BufWinEnter *.py call Parse_Python_Shebang()
-" java related
+
+" java
 let g:syntastic_c_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
 let g:syntastic_cpp_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
+
+" javascript
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_mode_map = {
+      \ 'mode': 'active',
+      \ 'active_filetypes': ['javascript'],
+      \ 'passive_filetypes': []
+      \ }
 
 "================================================
 " plantuml-syntax
@@ -402,3 +410,13 @@ autocmd BufNewFile *.uml 0r $HOME/.vim/template/temp.uml
 autocmd BufNewFile *.html 0r $HOME/.vim/template/temp.html
 autocmd BufNewFile *.css 0r $HOME/.vim/template/temp.css
 autocmd BufNewFile *.er 0r $HOME/.vim/template/temp.er
+
+"================================================
+" javascript/nodeJS complete
+"================================================
+autocmd FileType javascript setlocal omnifunc=nodejscomplete#CompleteJS
+if !exists('g:neocomplcache_omni_functions')
+  let g:neocomplcache_omni_functions = {}
+endif
+let g:neocomplcache_omni_functions.javascript = 'nodejscomplete#CompleteJS'
+let g:node_usejscomplete = 1
