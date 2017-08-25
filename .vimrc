@@ -420,3 +420,9 @@ if !exists('g:neocomplcache_omni_functions')
 endif
 let g:neocomplcache_omni_functions.javascript = 'nodejscomplete#CompleteJS'
 let g:node_usejscomplete = 1
+
+"================================================
+" jsdoc
+"================================================
+let g:jsdoc_default_mapping = 0
+nnoremap <silent> <C-J> :JsDoc<CR>
