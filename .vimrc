@@ -190,10 +190,12 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'aklt/plantuml-syntax'
 "NeoBundle 'davidhalter/jedi-vim'
 
-" For html/css/js/typescript
+" For TypeScript
 NeoBundle 'Quramy/tsuquyomi'
+
+" For html/css/js/typescript
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'ternjs/tern_for_vim', {'build': {'others': 'npm install'}}
+" NeoBundle 'ternjs/tern_for_vim', {'build': {'others': 'npm install'}}
 NeoBundleLazy 'heavenshell/vim-jsdoc' , {'autoload': {'filetypes': ['javascript']}}
 NeoBundleLazy 'leafgarland/typescript-vim' , {'autoload': {'filetypes': ['javascript']}}
 NeoBundleLazy 'myhere/vim-nodejs-complete' , {'autoload': {'filetypes': ['javascript']}}
