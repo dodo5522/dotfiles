@@ -197,7 +197,7 @@ NeoBundle 'Quramy/tsuquyomi'
 NeoBundle 'mattn/emmet-vim'
 " NeoBundle 'ternjs/tern_for_vim', {'build': {'others': 'npm install'}}
 NeoBundleLazy 'heavenshell/vim-jsdoc' , {'autoload': {'filetypes': ['javascript']}}
-NeoBundleLazy 'leafgarland/typescript-vim' , {'autoload': {'filetypes': ['javascript']}}
+NeoBundleLazy 'leafgarland/typescript-vim' , {'autoload': {'filetypes': ['typescript']}}
 NeoBundleLazy 'myhere/vim-nodejs-complete' , {'autoload': {'filetypes': ['javascript']}}
 
 " Benchmark vimrc
@@ -306,12 +306,12 @@ nmap , [unite]
 nnoremap <silent> [unite]f  :<C-u>Unite<space>file<cr>
 nnoremap <silent> [unite]b  :<C-u>Unite<space>buffer<cr>
 nnoremap <silent> [unite]fb :<C-u>Unite<space>file buffer<cr>
-" grep検索
-nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 " カーソル位置の単語をgrep検索
-nnoremap <silent> [unite]cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+" grep検索
+nnoremap <silent> [unite]gn :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 " grep検索結果の再呼出
-nnoremap <silent> [unite]r  :<C-u>UniteResume search-buffer<CR>
+nnoremap <silent> [unite]gr :<C-u>UniteResume search-buffer<CR>
 " unite grep に ag(The Silver Searcher) を使う
 if executable('ag')
     let g:unite_source_grep_command = 'ag'
