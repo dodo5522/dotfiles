@@ -176,8 +176,8 @@ NeoBundle 'open-browser.vim'
 "NeoBundle 'kana/vim-submode'
 
 " For evaluation of C/C++ code
-NeoBundle 'vim-scripts/trinity.vim'
-NeoBundle 'vim-scripts/SrcExpl'
+" NeoBundle 'vim-scripts/trinity.vim'
+" NeoBundle 'vim-scripts/SrcExpl'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle '5t111111/alt-gtags.vim'
 NeoBundle 'vim-scripts/taglist.vim'
