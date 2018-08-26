@@ -219,7 +219,12 @@ NeoBundleCheck
 "----------------------------------------------------------
 " 起動時に行ハイライトを有効にしたい
 "----------------------------------------------------------
-let g:gitgutter_highlight_lines = 1
+let g:gitgutter_highlight_lines = 0
+
+"----------------------------------------------------------
+" TagList for javascript
+"----------------------------------------------------------
+let g:tlist_javascript_settings = 'javascript;c:class;m:method;f:function;p:property'
 
 "----------------------------------------------------------
 " molokaiの設定
