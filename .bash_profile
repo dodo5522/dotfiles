@@ -22,8 +22,13 @@ if [ "$(uname)" = 'Darwin' ]; then
     export ARDUINO_DIR=/Applications/Arduino.app/Contents/Java
     export ARDMK_DIR=${HOME}/Development/Arduino-Makefile
     export AVR_TOOLS_DIR=/Applications/Arduino.app/Contents/Java/hardware/tools/avr
+elif [ "$(uname)" = 'Linux' ]; then
+    export PATH="/opt/arduino-1.8.5:$PATH"
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export GOPATH="$HOME/go/bin"
+export PATH="$GOPATH:$HOME/.cargo/bin:$PATH"
