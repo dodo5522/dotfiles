@@ -200,6 +200,10 @@ NeoBundleLazy 'heavenshell/vim-jsdoc' , {'autoload': {'filetypes': ['javascript'
 NeoBundleLazy 'leafgarland/typescript-vim' , {'autoload': {'filetypes': ['typescript']}}
 NeoBundleLazy 'myhere/vim-nodejs-complete' , {'autoload': {'filetypes': ['javascript']}}
 
+" go lang
+" 拡張子の判別も含んでいる
+NeoBundle 'fatih/vim-go'
+
 " Benchmark vimrc
 "NeoBundle 'git://github.com/mattn/benchvimrc-vim.git'
 
@@ -384,6 +388,8 @@ let g:neocomplete#sources#dictionary#dictionaries = {
    \ }
 " 補完候補の一番先頭を無選択状態にする
 let g:neocomplete#enable_auto_select = 0
+" for go lang
+"let g:neocomplete#force_omni_input_patterns.go = '\h\w\.\w*'
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
@@ -433,3 +439,10 @@ let g:node_usejscomplete = 1
 "================================================
 let g:jsdoc_default_mapping = 0
 nnoremap <silent> <C-J> :JsDoc<CR>
+
+"================================================
+" vim-go
+"================================================
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
