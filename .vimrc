@@ -187,25 +187,20 @@ NeoBundle 'soramugi/auto-ctags.vim'
 NeoBundle 'scrooloose/syntastic'
 "NeoBundle 'Chiel92/vim-autoformat'
 "NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'aklt/plantuml-syntax'
 "NeoBundle 'davidhalter/jedi-vim'
-
-" For TypeScript
-NeoBundle 'Quramy/tsuquyomi'
+NeoBundle 'aklt/plantuml-syntax'
 
 " For html/css/js/typescript
 NeoBundle 'mattn/emmet-vim'
 " NeoBundle 'ternjs/tern_for_vim', {'build': {'others': 'npm install'}}
-NeoBundleLazy 'heavenshell/vim-jsdoc' , {'autoload': {'filetypes': ['javascript']}}
+NeoBundleLazy 'heavenshell/vim-jsdoc' , {'autoload': {'filetypes': ['js']}}
 NeoBundleLazy 'leafgarland/typescript-vim' , {'autoload': {'filetypes': ['typescript']}}
-NeoBundleLazy 'myhere/vim-nodejs-complete' , {'autoload': {'filetypes': ['javascript']}}
-
-" go lang
+NeoBundleLazy 'Quramy/tsuquyomi' , {'autoload': {'filetypes': ['typescript']}}
+NeoBundleLazy 'myhere/vim-nodejs-complete' , {'autoload': {'filetypes': ['js']}}
+NeoBundleLazy 'digitaltoad/vim-pug' , {'autoload': {'filetypes': ['jade', 'pug']}}
 " 拡張子の判別も含んでいる
-NeoBundle 'fatih/vim-go'
-
-" Benchmark vimrc
-"NeoBundle 'git://github.com/mattn/benchvimrc-vim.git'
+NeoBundleLazy 'fatih/vim-go' , {'autoload': {'filetypes': ['go']}}
+NeoBundleLazy 'vim-jp/vim-go-extra' , {'autoload': {'filetypes': ['go']}}
 
 call neobundle#end()
 
@@ -295,7 +290,7 @@ let g:syntastic_cpp_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_mode_map = {
       \ 'mode': 'active',
-      \ 'active_filetypes': ['javascript'],
+      \ 'active_filetypes': ['js'],
       \ 'passive_filetypes': []
       \ }
 
