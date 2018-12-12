@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.tsx setf javascript
+au BufNewFile,BufRead *.tsx setf typescript
