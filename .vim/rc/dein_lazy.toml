@@ -1,0 +1,96 @@
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+on_i = 1
+hook_add = '''
+  " Disable AutoComplPop.
+  let g:acp_enableAtStartup = 0
+  " Use neocomplete.
+  let g:neocomplete#enable_at_startup = 1
+  " Use smartcase.
+  let g:neocomplete#enable_smart_case = 1
+  " Set minimum syntax keyword length.
+  let g:neocomplete#sources#syntax#min_keyword_length = 2
+  let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+  " Define dictionary.
+  let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : ''
+    \ }
+  " 補完候補の一番先頭を無選択状態にする
+  let g:neocomplete#enable_auto_select = 0
+  " for go lang
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+  let g:neocomplete#sources#omni#input_patterns.go = '\h\w\.\w*'
+  " Plugin key-mappings.
+  inoremap <expr><C-g> neocomplete#undo_completion()
+  inoremap <expr><C-l> neocomplete#complete_common_string()
+  " Recommended key-mappings.
+  " <CR>: close popup and save indent.
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function()
+     return neocomplete#smart_close_popup() . "\<CR>"
+  endfunction
+  " <TAB>: completion.
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  " <C-h>, <BS>: close popup and delete backword char.
+  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><C-y> neocomplete#close_popup()
+  inoremap <expr><C-e> neocomplete#cancel_popup()
+'''
+
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+on_ft = ['python']
+
+[[plugins]]
+repo  = 'heavenshell/vim-jsdoc'
+on_ft = ['js']
+hook_add = '''
+  let g:jsdoc_default_mapping = 0
+  nnoremap <silent> <C-J> :JsDoc<CR>
+'''
+
+[[plugins]]
+repo  = 'myhere/vim-nodejs-complete'
+on_source = ['vim-jsdoc']
+
+[[plugins]]
+repo  = 'Quramy/tsuquyomi'
+on_ft = ['typescript']
+
+[[plugins]]
+repo  = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
+
+[[plugins]]
+repo  = 'digitaltoad/vim-pug'
+on_ft = ['pug', 'jade']
+
+[[plugins]]
+repo  = 'fatih/vim-go'
+on_ft = ['go']
+hook_add = '''
+  let g:go_highlight_functions = 1
+  let g:go_highlight_methods = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_types = 1
+  let g:go_highlight_structs = 1
+  let g:go_highlight_operators = 1
+  let g:go_highlight_build_constraints = 1
+  let g:go_gocode_unimported_packages = 1
+'''
+
+[[plugins]]
+repo  = 'vim-jp/vim-go-extra'
+on_source = ['vim-go']
+
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+on_ft = ['uml']
+hook_add = '''
+  if executable('plantuml')
+    let g:plantuml_executable_script='plantuml'
+  endif
+'''

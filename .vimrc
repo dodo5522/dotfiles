@@ -49,13 +49,6 @@ set mouse=
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
 "================================================
-" syntastic
-"================================================
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-"================================================
 " 挿入モードでクリップボードからペーストする時に自動でインデントさせないようにする
 "================================================
 if &term =~ "xterm"
@@ -134,86 +127,46 @@ map <silent> [Tag]n :tabnext<CR>
 map <silent> [Tag]p :tabprevious<CR>
 
 "================================================
-" configure neobundle
+" configure dein
 "================================================
-let g:neobundle_default_git_protocol='https'
+" プラグインが実際にインストールされるディレクトリ
+let s:dein_dir = expand('~/.cache/dein')
+" dein.vim 本体
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+" dein.vim がなければ github から落としてくる
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+" 設定開始
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+  " プラグインリストを収めた TOML ファイル
+  let g:rc_dir    = expand('~/.vim/rc')
+  let s:toml      = g:rc_dir . '/dein.toml'
+  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 
-" Recommended to install
-" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'Shougo/unite-ssh'
-"NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
+  " TOML を読み込み、キャッシュしておく
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-" Color scheme
-"NeoBundle 'tomasr/molokai'
+  " 設定終了
+  call dein#end()
+  call dein#save_state()
+endif
 
-" My Bundles here:
-" Note: You don't set neobundle setting in .gvimrc!
-" Original repos on github
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
-"NeoBundle 'tpope/vim-rails.git'
-"NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'thinca/vim-quickrun'
-" vim-scripts repos
-NeoBundle 'L9'
-NeoBundle 'FuzzyFinder'
-"NeoBundle 'rails.vim'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'open-browser.vim'
-"NeoBundle 'kana/vim-submode'
-
-" For evaluation of C/C++ code
-" NeoBundle 'vim-scripts/trinity.vim'
-" NeoBundle 'vim-scripts/SrcExpl'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle '5t111111/alt-gtags.vim'
-NeoBundle 'vim-scripts/taglist.vim'
-NeoBundle 'soramugi/auto-ctags.vim'
-
-" code syntax checker
-NeoBundle 'scrooloose/syntastic'
-"NeoBundle 'Chiel92/vim-autoformat'
-"NeoBundle 'bronson/vim-trailing-whitespace'
-"NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'aklt/plantuml-syntax'
-
-" For html/css/js/typescript
-NeoBundle 'mattn/emmet-vim'
-" NeoBundle 'ternjs/tern_for_vim', {'build': {'others': 'npm install'}}
-NeoBundleLazy 'heavenshell/vim-jsdoc' , {'autoload': {'filetypes': ['js']}}
-NeoBundleLazy 'leafgarland/typescript-vim' , {'autoload': {'filetypes': ['typescript']}}
-NeoBundleLazy 'Quramy/tsuquyomi' , {'autoload': {'filetypes': ['typescript']}}
-NeoBundleLazy 'myhere/vim-nodejs-complete' , {'autoload': {'filetypes': ['js']}}
-NeoBundleLazy 'digitaltoad/vim-pug' , {'autoload': {'filetypes': ['jade', 'pug']}}
-" 拡張子の判別も含んでいる
-NeoBundleLazy 'fatih/vim-go' , {'autoload': {'filetypes': ['go']}}
-NeoBundleLazy 'vim-jp/vim-go-extra' , {'autoload': {'filetypes': ['go']}}
-
-call neobundle#end()
+" もし、未インストールものものがあったらインストール
+if dein#check_install()
+  call dein#install()
+endif
 
 filetype on
 filetype plugin indent on     " Required!
-"
-" Brief help
-" :NeoBundleList          - list configured bundles
-" :NeoBundleInstall(!)    - install(update) bundles
-" :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-
-" Installation check.
-NeoBundleCheck
 
 "----------------------------------------------------------
 " 起動時に行ハイライトを有効にしたい
@@ -225,20 +178,6 @@ let g:gitgutter_highlight_lines = 0
 "----------------------------------------------------------
 let g:tlist_javascript_settings = 'javascript;c:class;m:method;f:function;p:property'
 
-"----------------------------------------------------------
-" molokaiの設定
-"----------------------------------------------------------
-colorscheme molokai
-let g:molokai_original=1
-set t_Co=256    " iTerm2など既に256色環境なら無くても良い
-syntax enable   " 構文に色を付ける
-
-"================================================
-" NERDTree
-"================================================
-let g:NERDTreeDirArrows=0
-command Tr NERDTree
-
 "================================================
 " ctags
 "================================================
@@ -249,165 +188,6 @@ let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 let g:auto_ctags_filetype_mode = 1
 nnoremap <C-k> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap <C-h> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
-
-"================================================
-" syntastic
-"================================================
-let g:syntastic_check_on_open = 0            " ファイルを開いたときはチェックしない
-let g:syntastic_check_on_wq = 0              " wpではチェックしない
-let g:syntastic_auto_loc_list = 1            " error時は自動でロケーションリストを開く
-let g:syntastic_loc_list_height=5            " error表示ウィンドウの高さ
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_python2_python_exe = 'python'
-let g:syntastic_python3_python_exe = 'python3'
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args = '--ignore=E501,W601,D203'
-
-function! Parse_Python_Shebang()                    
-    let line = getline(1)
-    if line =~# '\m^#!\s*[^ \t]*\<python2\=\>'
-        let g:syntastic_python_python_exec = g:syntastic_python2_python_exe
-    elseif line =~# '\m^#!\s*[^ \t]*\<env\>\s*\<python2>'
-        let g:syntastic_python_python_exec = g:syntastic_python2_python_exe
-    elseif line =~# '\m^#!\s*[^ \t]*\<python3\>'
-        let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
-    elseif line =~# '\m^#!\s*[^ \t]*\<env\>\s*\<python3\>'
-        let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
-    else
-        let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
-    endif
-endfunction                                         
-
-command! SyntasticPython2 let g:syntastic_python_python_exec = g:syntastic_python2_python_exe
-command! SyntasticPython3 let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
-autocmd BufWinEnter *.py call Parse_Python_Shebang()
-
-" java
-let g:syntastic_c_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
-let g:syntastic_cpp_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
-
-" javascript
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_mode_map = {
-      \ 'mode': 'active',
-      \ 'active_filetypes': ['js'],
-      \ 'passive_filetypes': []
-      \ }
-
-"================================================
-" plantuml-syntax
-"================================================
-if executable('plantuml')
-    let g:plantuml_executable_script='plantuml'
-endif
-
-"================================================
-" add aliases
-"================================================
-nnoremap [unite] <Nop>
-nmap , [unite]
-" filer
-nnoremap <silent> [unite]f  :<C-u>Unite<space>file<cr>
-nnoremap <silent> [unite]b  :<C-u>Unite<space>buffer<cr>
-nnoremap <silent> [unite]fb :<C-u>Unite<space>file buffer<cr>
-" カーソル位置の単語をgrep検索
-nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
-" grep検索
-nnoremap <silent> [unite]gn :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-" grep検索結果の再呼出
-nnoremap <silent> [unite]gr :<C-u>UniteResume search-buffer<CR>
-" unite grep に ag(The Silver Searcher) を使う
-if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-    let g:unite_source_grep_recursive_opt = ''
-elseif executable('hw')
-    let g:unite_source_grep_command = 'hw'
-    let g:unite_source_grep_default_opts = '--no-group --no-color'
-    let g:unite_source_grep_recursive_opt = ''
-elseif executable('grep')
-    let g:unite_source_grep_command = 'grep'
-    let g:unite_source_grep_default_opts = '-nH'
-    let g:unite_source_grep_recursive_opt = '-r'
-endif
-
-"================================================
-" configure vim-quickrun
-"================================================
-let g:quickrun_config = {}
-let g:quickrun_config={'*': {'split': ''}}
-let g:quickrun_config['markdown'] = {
-    \ 'type': 'markdown/pandoc',
-    \ 'outputter': 'browser',
-    \ 'cmdopt': '-s'
-    \ }
-let g:quickrun_config['pytest3'] = {
-    \ 'command': 'py.test-3',
-    \ 'cmdopt': '-s -v',
-    \ 'hook/shebang/enable': 0,
-    \ }
-
-"================================================
-" configure vim-indent-guides
-"================================================
-" vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
-let g:indent_guides_enable_on_vim_startup=1
-" ガイドをスタートするインデントの量
-let g:indent_guides_start_level=1
-" 自動カラー(0:disable, 1:enable)
-let g:indent_guides_auto_colors=1
-" 奇数インデントのカラー
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
-" 偶数インデントのカラー
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
-" ハイライト色の変化の幅
-let g:indent_guides_color_change_percent = 30
-" ガイドの幅
-let g:indent_guides_guide_size = 1
-
-"================================================
-" configure neocomplete
-"================================================
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 2
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-   \ 'default' : ''
-   \ }
-" 補完候補の一番先頭を無選択状態にする
-let g:neocomplete#enable_auto_select = 0
-" for go lang
-"let g:neocomplete#force_omni_input_patterns.go = '\h\w\.\w*'
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-   return neocomplete#smart_close_popup() . "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-
-"================================================
-" lightline
-"================================================
-let g:lightline = {
-    \ 'colorscheme': 'powerline',
-    \ }
 
 "================================================
 " insert the template of new created file
@@ -428,16 +208,3 @@ if !exists('g:neocomplcache_omni_functions')
 endif
 let g:neocomplcache_omni_functions.javascript = 'nodejscomplete#CompleteJS'
 let g:node_usejscomplete = 1
-
-"================================================
-" jsdoc
-"================================================
-let g:jsdoc_default_mapping = 0
-nnoremap <silent> <C-J> :JsDoc<CR>
-
-"================================================
-" vim-go
-"================================================
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1

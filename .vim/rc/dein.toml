@@ -1,0 +1,176 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  if dein#util#_is_windows()
+    let cmd = 'tools\\update-dll-mingw'
+  elseif dein#util#_is_cygwin()
+    let cmd = 'make -f make_cygwin.mak'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = '''
+  nnoremap [unite] <Nop>
+  nmap , [unite]
+  " ファイラ
+  nnoremap <silent> [unite]f  :<C-u>Unite<space>file<cr>
+  nnoremap <silent> [unite]b  :<C-u>Unite<space>buffer<cr>
+  nnoremap <silent> [unite]fb :<C-u>Unite<space>file buffer<cr>
+  " カーソル位置の単語をgrep検索
+  nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+  " grep検索
+  nnoremap <silent> [unite]gn :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+  " grep検索結果の再呼出
+  nnoremap <silent> [unite]gr :<C-u>UniteResume search-buffer<CR>
+  " unite grep に ag(The Silver Searcher) を使う
+  if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+  elseif executable('hw')
+    let g:unite_source_grep_command = 'hw'
+    let g:unite_source_grep_default_opts = '--no-group --no-color'
+    let g:unite_source_grep_recursive_opt = ''
+  elseif executable('grep')
+    let g:unite_source_grep_command = 'grep'
+    let g:unite_source_grep_default_opts = '-nH'
+    let g:unite_source_grep_recursive_opt = '-r'
+  endif
+
+'''
+
+[[plugins]]
+repo = 'Shougo/unite-ssh'
+on_source = ['unite.vim']
+[[plugins]]
+repo = 'Shougo/unite-outline'
+on_source = ['unite.vim']
+
+[[plugins]]
+repo = 'tomasr/molokai'
+hook_add = '''
+  colorscheme molokai
+  let g:molokai_original=1
+  set t_Co=256    " iTerm2など既に256色環境なら無くても良い
+  syntax enable   " 構文に色を付ける
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  let g:NERDTreeDirArrows=0
+  command Tr NERDTree
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  let g:lightline = {
+    \ 'colorscheme': 'powerline',
+    \ }
+'''
+
+[[plugins]]
+repo = 'vim-syntastic/syntastic'
+hook_add = '''
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+  let g:syntastic_check_on_open = 0            " ファイルを開いたときはチェックしない
+  let g:syntastic_check_on_wq = 0              " wpではチェックしない
+  let g:syntastic_auto_loc_list = 1            " error時は自動でロケーションリストを開く
+  let g:syntastic_loc_list_height=5            " error表示ウィンドウの高さ
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_python2_python_exe = 'python'
+  let g:syntastic_python3_python_exe = 'python3'
+  let g:syntastic_python_checkers = ['flake8']
+  let g:syntastic_python_flake8_args = '--ignore=E501,D203'
+
+  function! Parse_Python_Shebang()
+    let line = getline(1)
+    if line =~# '\m^#!\s*[^ \t]*\<python2\=\>'
+      let g:syntastic_python_python_exec = g:syntastic_python2_python_exe
+    elseif line =~# '\m^#!\s*[^ \t]*\<env\>\s*\<python2>'
+      let g:syntastic_python_python_exec = g:syntastic_python2_python_exe
+    elseif line =~# '\m^#!\s*[^ \t]*\<python3\>'
+      let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
+    elseif line =~# '\m^#!\s*[^ \t]*\<env\>\s*\<python3\>'
+      let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
+    else
+      let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
+    endif
+  endfunction
+
+  command! SyntasticPython2 let g:syntastic_python_python_exec = g:syntastic_python2_python_exe
+  command! SyntasticPython3 let g:syntastic_python_python_exec = g:syntastic_python3_python_exe
+  autocmd BufWinEnter *.py call Parse_Python_Shebang()
+
+  " java
+  let g:syntastic_c_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
+  let g:syntastic_cpp_cflags = '-I/usr/lib/jvm/java-7-openjdk-amd64/include'
+
+  " javascript
+  let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_mode_map = {
+    \ 'mode': 'active',
+    \ 'active_filetypes': ['js'],
+    \ 'passive_filetypes': ['go']
+    \ }
+'''
+
+[[plugins]]
+"repo = 'Chiel92/vim-autoformat'
+[[plugins]]
+"repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+  " vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
+  let g:indent_guides_enable_on_vim_startup=1
+  " ガイドをスタートするインデントの量
+  let g:indent_guides_start_level=1
+  " 自動カラー(0:disable, 1:enable)
+  let g:indent_guides_auto_colors=1
+  " 奇数インデントのカラー
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
+  " 偶数インデントのカラー
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
+  " ハイライト色の変化の幅
+  let g:indent_guides_color_change_percent = 30
+  " ガイドの幅
+  let g:indent_guides_guide_size = 1
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+[[plugins]]
+repo = 'vim-scripts/L9'
+[[plugins]]
+repo = 'vim-scripts/FuzzyFinder'
+[[plugins]]
+repo = 'vim-scripts/rails.vim'
+[[plugins]]
+repo = 'vim-scripts/open-browser.vim'
+
+[[plugins]]
+repo = 'vim-scripts/trinity.vim'
+[[plugins]]
+repo = 'vim-scripts/SrcExpl'
+[[plugins]]
+repo = '5t111111/alt-gtags.vim'
+[[plugins]]
+repo = 'vim-scripts/taglist.vim'
+[[plugins]]
+repo = 'soramugi/auto-ctags.vim'
