@@ -94,3 +94,11 @@ hook_add = '''
     let g:plantuml_executable_script='plantuml'
   endif
 '''
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+on_ft = ['ruby']
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+on_source = ['vim-rails']
