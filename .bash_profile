@@ -3,7 +3,8 @@ PS1="\[\e[36m\]\h\[\e[37m\]:\[\e[33m\]\W\[\e[37m\] $ "
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/linaro/arm-linux-gnueabihf-raspbian/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="${HOME}/go/bin:$PATH"
+export GOPATH="$HOME/go/bin"
+export PATH="$GOPATH:$HOME/.cargo/bin:$PATH"
 export LESS='-g -i -M -R -S -W -z-4 -x4'
 
 ### Added by anyenv
@@ -34,5 +35,5 @@ fi
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export GOPATH="$HOME/go/bin"
-export PATH="$GOPATH:$HOME/.cargo/bin:$PATH"
+export PATH="/opt/android-studio-ide-171.4443003-3.0.1:$PATH"
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
