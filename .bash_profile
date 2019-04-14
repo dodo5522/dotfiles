@@ -7,10 +7,10 @@ export PATH="${HOME}/go/bin:$PATH"
 export LESS='-g -i -M -R -S -W -z-4 -x4'
 
 ### Added by anyenv
-if [ -d $HOME/.anyenv ]; then
+if [ -d "$HOME/.anyenv" ]; then
     export PATH="$HOME/.anyenv/bin:$PATH"
     eval "$(anyenv init -)"
-    for D in $(ls $HOME/.anyenv/envs)
+    for D in $(ls "$HOME/.anyenv/envs")
     do
         export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
     done
