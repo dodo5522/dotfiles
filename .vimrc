@@ -172,27 +172,6 @@ endif
 filetype on
 filetype plugin indent on     " Required!
 
-"----------------------------------------------------------
-" 起動時に行ハイライトを有効にしたい
-"----------------------------------------------------------
-let g:gitgutter_highlight_lines = 0
-
-"----------------------------------------------------------
-" TagList for javascript
-"----------------------------------------------------------
-let g:tlist_javascript_settings = 'javascript;c:class;m:method;f:function;p:property'
-
-"================================================
-" ctags
-"================================================
-let g:auto_ctags = 1
-let g:auto_ctags_directory_list = ['.git', '.svn']
-let g:auto_ctags_tags_name = 'tags'
-let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
-let g:auto_ctags_filetype_mode = 1
-nnoremap <C-k> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
-nnoremap <C-h> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
-
 "================================================
 " insert the template of new created file
 "================================================

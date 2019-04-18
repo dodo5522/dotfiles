@@ -163,6 +163,8 @@ hook_add = '''
 repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+hook_add = 'let g:gitgutter_highlight_lines = 0'
+
 [[plugins]]
 repo = 'vim-scripts/L9'
 [[plugins]]
@@ -177,8 +179,7 @@ repo = 'vim-scripts/trinity.vim'
 [[plugins]]
 repo = 'vim-scripts/SrcExpl'
 [[plugins]]
-repo = '5t111111/alt-gtags.vim'
-[[plugins]]
 repo = 'vim-scripts/taglist.vim'
-[[plugins]]
-repo = 'soramugi/auto-ctags.vim'
+hook_add = '''
+  let g:tlist_javascript_settings = 'javascript;c:class;m:method;f:function;p:property'
+'''
