@@ -1,5 +1,13 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+# need pyvim @python3
+# pip3 install --user --upgrade pynvim
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'

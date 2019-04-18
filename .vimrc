@@ -142,6 +142,10 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
+if &compatible
+  set nocompatible
+endif
+
 " 設定開始
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
@@ -198,13 +202,3 @@ autocmd BufNewFile *.uml 0r $HOME/.vim/template/temp.uml
 autocmd BufNewFile *.html 0r $HOME/.vim/template/temp.html
 autocmd BufNewFile *.css 0r $HOME/.vim/template/temp.css
 autocmd BufNewFile *.er 0r $HOME/.vim/template/temp.er
-
-"================================================
-" javascript/nodeJS complete
-"================================================
-autocmd FileType javascript setlocal omnifunc=nodejscomplete#CompleteJS
-if !exists('g:neocomplcache_omni_functions')
-  let g:neocomplcache_omni_functions = {}
-endif
-let g:neocomplcache_omni_functions.javascript = 'nodejscomplete#CompleteJS'
-let g:node_usejscomplete = 1
