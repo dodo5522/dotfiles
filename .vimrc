@@ -1,15 +1,14 @@
-"================================================
-" basic settings
-"================================================
+set encoding=utf-8
+scriptencoding utf-8
+
 let g:rehash256=1
 "set background=dark
 
 set laststatus=2
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set pastetoggle=<F12>           "set pasteはどんなキーマップもプラグインも動作できなくなるので、これで代用する
-set noic						"大文字小文字を区別する
+set noignorecase				"大文字小文字を区別する
 "set foldmethod=marker			" マーカーに囲まれた部分を折り畳む
-set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp
 set fileformats=unix,dos,mac
@@ -17,7 +16,6 @@ set ambiwidth=double
 set autoindent					"新しい行のインデントを現在行と同じにする
 set backupdir=$HOME/.vimbackup	"バックアップファイルのディレクトリを指定する
 set clipboard=unnamed			"クリップボードをWindowsと連携する
-set nocompatible				"vi互換をオフする
 set directory=$HOME/.vimbackup	"スワップファイル用のディレクトリを指定する
 set hidden						"変更中のファイルでも、保存しないで他のファイルを表示する
 set incsearch					"インクリメンタルサーチを行う
@@ -53,7 +51,7 @@ filetype plugin indent off
 "================================================
 " 挿入モードでクリップボードからペーストする時に自動でインデントさせないようにする
 "================================================
-if &term =~ "xterm"
+if &term =~? 'xterm'
     let &t_SI .= "\e[?2004h"
     let &t_EI .= "\e[?2004l"
     let &pastetoggle = "\e[201~"
@@ -130,10 +128,6 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-if &compatible
-  set nocompatible
-endif
-
 " 設定開始
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
@@ -156,42 +150,6 @@ endif
 if dein#check_install()
   call dein#install()
 endif
-
-"================================================
-" Configure filetype plugins
-"================================================
-autocmd BufRead,BufNewFile *.aidl   setfiletype java
-autocmd BufRead,BufNewFile *.c      setfiletype cpp
-autocmd BufRead,BufNewFile *.cpp    setfiletype cpp
-autocmd BufRead,BufNewFile *.cxx    setfiletype cpp
-autocmd BufRead,BufNewFile *.h      setfiletype cpp
-autocmd BufRead,BufNewFile *.hpp    setfiletype cpp
-autocmd BufRead,BufNewFile *.hxx    setfiletype cpp
-autocmd BufRead,BufNewFile *.ino    setfiletype cpp
-autocmd BufRead,BufNewFile *.ejs    setfiletype html
-autocmd BufRead,BufNewFile *.pug    setfiletype pug
-autocmd BufRead,BufNewFile *.css    setfiletype css
-autocmd BufRead,BufNewFile *.jade   setfiletype jade
-autocmd BufRead,BufNewFile *.er     setfiletype dot
-autocmd BufRead,BufNewFile *.go     setfiletype go
-autocmd BufRead,BufNewFile *.js     setfiletype javascript
-autocmd BufRead,BufNewFile *.jsx    setfiletype javascript
-autocmd BufRead,BufNewFile *.json   setfiletype javascript
-autocmd BufRead,BufNewFile *.ts     setfiletype typescript
-autocmd BufRead,BufNewFile *.tsx    setfiletype typescript
-autocmd BufRead,BufNewFile *.md     setfiletype markdown
-autocmd BufRead,BufNewFile *.rb     setfiletype ruby
-autocmd BufRead,BufNewFile Gemfile  setfiletype ruby
-autocmd BufRead,BufNewFile Rakefile setfiletype ruby
-autocmd BufRead,BufNewFile *.yml    setfiletype ruby
-autocmd BufRead,BufNewFile *.py     setfiletype python
-
-autocmd BufNewFile *.py   0r $HOME/.vim/template/temp.py
-autocmd BufNewFile *.md   0r $HOME/.vim/template/temp.md
-autocmd BufNewFile *.uml  0r $HOME/.vim/template/temp.uml
-autocmd BufNewFile *.html 0r $HOME/.vim/template/temp.html
-autocmd BufNewFile *.css  0r $HOME/.vim/template/temp.css
-autocmd BufNewFile *.er   0r $HOME/.vim/template/temp.er
 
 filetype on
 filetype plugin indent on     " Required!
