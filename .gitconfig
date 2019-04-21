@@ -1,6 +1,6 @@
 [user]
+	email = takashi7ando@gmail.com
 	name = Takashi Ando
-	email = dodo5522@gmail.com
 [core]
 	excludesfile = /Users/takashi/.gitignore_global
 	editor = vim

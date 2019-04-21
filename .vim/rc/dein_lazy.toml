@@ -4,7 +4,7 @@ on_ft = ['python']
 
 [[plugins]]
 repo  = 'heavenshell/vim-jsdoc'
-on_ft = ['js']
+on_ft = ['javascript']
 hook_add = '''
   let g:jsdoc_default_mapping = 0
   nnoremap <silent> <C-J> :JsDoc<CR>
@@ -12,7 +12,7 @@ hook_add = '''
 
 [[plugins]]
 repo  = 'myhere/vim-nodejs-complete'
-on_source = ['vim-jsdoc']
+on_ft = ['javascript']
 
 [[plugins]]
 repo  = 'Quramy/tsuquyomi'
