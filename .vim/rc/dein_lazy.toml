@@ -1,0 +1,62 @@
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+on_ft = ['python']
+
+[[plugins]]
+repo  = 'heavenshell/vim-jsdoc'
+on_ft = ['js']
+hook_add = '''
+  let g:jsdoc_default_mapping = 0
+  nnoremap <silent> <C-J> :JsDoc<CR>
+'''
+
+[[plugins]]
+repo  = 'myhere/vim-nodejs-complete'
+on_source = ['vim-jsdoc']
+
+[[plugins]]
+repo  = 'Quramy/tsuquyomi'
+on_ft = ['typescript']
+
+[[plugins]]
+repo  = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
+
+[[plugins]]
+repo  = 'digitaltoad/vim-pug'
+on_ft = ['pug', 'jade']
+
+[[plugins]]
+repo  = 'fatih/vim-go'
+on_ft = ['go']
+hook_add = '''
+  let g:go_highlight_functions = 1
+  let g:go_highlight_methods = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_types = 1
+  let g:go_highlight_structs = 1
+  let g:go_highlight_operators = 1
+  let g:go_highlight_build_constraints = 1
+  let g:go_gocode_unimported_packages = 1
+'''
+
+[[plugins]]
+repo  = 'vim-jp/vim-go-extra'
+on_source = ['vim-go']
+
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+on_ft = ['uml']
+hook_add = '''
+  if executable('plantuml')
+    let g:plantuml_executable_script='plantuml'
+  endif
+'''
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+on_ft = ['ruby']
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+on_source = ['vim-rails']

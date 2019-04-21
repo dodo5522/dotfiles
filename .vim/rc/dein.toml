@@ -1,0 +1,138 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+# need pyvim @python3
+# pip3 install --user --upgrade pynvim
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+  let g:ale_echo_msg_error_str = 'E'
+  let g:ale_echo_msg_warning_str = 'W'
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  if dein#util#_is_windows()
+    let cmd = 'tools\\update-dll-mingw'
+  elseif dein#util#_is_cygwin()
+    let cmd = 'make -f make_cygwin.mak'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = '''
+  nnoremap [unite] <Nop>
+  nmap , [unite]
+  " ファイラ
+  nnoremap <silent> [unite]f  :<C-u>Unite<space>file<cr>
+  nnoremap <silent> [unite]b  :<C-u>Unite<space>buffer<cr>
+  nnoremap <silent> [unite]fb :<C-u>Unite<space>file buffer<cr>
+  " カーソル位置の単語をgrep検索
+  nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+  " grep検索
+  nnoremap <silent> [unite]gn :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+  " grep検索結果の再呼出
+  nnoremap <silent> [unite]gr :<C-u>UniteResume search-buffer<CR>
+  " unite grep に ag(The Silver Searcher) を使う
+  if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+  elseif executable('hw')
+    let g:unite_source_grep_command = 'hw'
+    let g:unite_source_grep_default_opts = '--no-group --no-color'
+    let g:unite_source_grep_recursive_opt = ''
+  elseif executable('grep')
+    let g:unite_source_grep_command = 'grep'
+    let g:unite_source_grep_default_opts = '-nH'
+    let g:unite_source_grep_recursive_opt = '-r'
+  endif
+
+'''
+
+[[plugins]]
+repo = 'Shougo/unite-ssh'
+on_source = ['unite.vim']
+[[plugins]]
+repo = 'Shougo/unite-outline'
+on_source = ['unite.vim']
+
+[[plugins]]
+repo = 'tomasr/molokai'
+hook_add = '''
+  colorscheme molokai
+  let g:molokai_original=1
+  set t_Co=256    " iTerm2など既に256色環境なら無くても良い
+  syntax enable   " 構文に色を付ける
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  let g:NERDTreeDirArrows=0
+  command Tr NERDTree
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  let g:lightline = {
+    \ 'colorscheme': 'powerline',
+    \ }
+'''
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+  " vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
+  let g:indent_guides_enable_on_vim_startup=1
+  " ガイドをスタートするインデントの量
+  let g:indent_guides_start_level=1
+  " 自動カラー(0:disable, 1:enable)
+  let g:indent_guides_auto_colors=1
+  " 奇数インデントのカラー
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
+  " 偶数インデントのカラー
+  "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
+  " ハイライト色の変化の幅
+  let g:indent_guides_color_change_percent = 30
+  " ガイドの幅
+  let g:indent_guides_guide_size = 1
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = 'let g:gitgutter_highlight_lines = 0'
+
+[[plugins]]
+repo = 'vim-scripts/L9'
+[[plugins]]
+repo = 'vim-scripts/FuzzyFinder'
+[[plugins]]
+repo = 'vim-scripts/rails.vim'
+
+[[plugins]]
+repo = 'vim-scripts/trinity.vim'
+[[plugins]]
+repo = 'vim-scripts/SrcExpl'
+[[plugins]]
+repo = 'vim-scripts/taglist.vim'
+hook_add = '''
+  let g:tlist_javascript_settings = 'javascript;c:class;m:method;f:function;p:property'
+'''
