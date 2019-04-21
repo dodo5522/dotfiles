@@ -157,41 +157,5 @@ if dein#check_install()
   call dein#install()
 endif
 
-"================================================
-" Configure filetype plugins
-"================================================
-autocmd BufRead,BufNewFile *.aidl   setfiletype java
-autocmd BufRead,BufNewFile *.c      setfiletype cpp
-autocmd BufRead,BufNewFile *.cpp    setfiletype cpp
-autocmd BufRead,BufNewFile *.cxx    setfiletype cpp
-autocmd BufRead,BufNewFile *.h      setfiletype cpp
-autocmd BufRead,BufNewFile *.hpp    setfiletype cpp
-autocmd BufRead,BufNewFile *.hxx    setfiletype cpp
-autocmd BufRead,BufNewFile *.ino    setfiletype cpp
-autocmd BufRead,BufNewFile *.ejs    setfiletype html
-autocmd BufRead,BufNewFile *.pug    setfiletype pug
-autocmd BufRead,BufNewFile *.css    setfiletype css
-autocmd BufRead,BufNewFile *.jade   setfiletype jade
-autocmd BufRead,BufNewFile *.er     setfiletype dot
-autocmd BufRead,BufNewFile *.go     setfiletype go
-autocmd BufRead,BufNewFile *.js     setfiletype javascript
-autocmd BufRead,BufNewFile *.jsx    setfiletype javascript
-autocmd BufRead,BufNewFile *.json   setfiletype javascript
-autocmd BufRead,BufNewFile *.ts     setfiletype typescript
-autocmd BufRead,BufNewFile *.tsx    setfiletype typescript
-autocmd BufRead,BufNewFile *.md     setfiletype markdown
-autocmd BufRead,BufNewFile *.rb     setfiletype ruby
-autocmd BufRead,BufNewFile Gemfile  setfiletype ruby
-autocmd BufRead,BufNewFile Rakefile setfiletype ruby
-autocmd BufRead,BufNewFile *.yml    setfiletype ruby
-autocmd BufRead,BufNewFile *.py     setfiletype python
-
-autocmd BufNewFile *.py   0r $HOME/.vim/template/temp.py
-autocmd BufNewFile *.md   0r $HOME/.vim/template/temp.md
-autocmd BufNewFile *.uml  0r $HOME/.vim/template/temp.uml
-autocmd BufNewFile *.html 0r $HOME/.vim/template/temp.html
-autocmd BufNewFile *.css  0r $HOME/.vim/template/temp.css
-autocmd BufNewFile *.er   0r $HOME/.vim/template/temp.er
-
 filetype on
 filetype plugin indent on     " Required!
