@@ -1,15 +1,14 @@
-"================================================
-" basic settings
-"================================================
+set encoding=utf-8
+scriptencoding utf-8
+
 let g:rehash256=1
 "set background=dark
 
 set laststatus=2
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set pastetoggle=<F12>           "set pasteはどんなキーマップもプラグインも動作できなくなるので、これで代用する
-set noic						"大文字小文字を区別する
+set noignorecase				"大文字小文字を区別する
 "set foldmethod=marker			" マーカーに囲まれた部分を折り畳む
-set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp
 set fileformats=unix,dos,mac
@@ -17,7 +16,6 @@ set ambiwidth=double
 set autoindent					"新しい行のインデントを現在行と同じにする
 set backupdir=$HOME/.vimbackup	"バックアップファイルのディレクトリを指定する
 set clipboard=unnamed			"クリップボードをWindowsと連携する
-set nocompatible				"vi互換をオフする
 set directory=$HOME/.vimbackup	"スワップファイル用のディレクトリを指定する
 set hidden						"変更中のファイルでも、保存しないで他のファイルを表示する
 set incsearch					"インクリメンタルサーチを行う
@@ -53,7 +51,7 @@ filetype plugin indent off
 "================================================
 " 挿入モードでクリップボードからペーストする時に自動でインデントさせないようにする
 "================================================
-if &term =~ "xterm"
+if &term =~? 'xterm'
     let &t_SI .= "\e[?2004h"
     let &t_EI .= "\e[?2004l"
     let &pastetoggle = "\e[201~"
@@ -128,10 +126,6 @@ if &runtimepath !~# '/dein.vim'
     execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
   endif
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-endif
-
-if &compatible
-  set nocompatible
 endif
 
 " 設定開始
