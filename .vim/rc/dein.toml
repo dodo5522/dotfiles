@@ -37,17 +37,12 @@ repo = 'Shougo/unite.vim'
 hook_add = '''
   nnoremap [unite] <Nop>
   nmap , [unite]
-  " ファイラ
   nnoremap <silent> [unite]f  :<C-u>Unite<space>file<cr>
   nnoremap <silent> [unite]b  :<C-u>Unite<space>buffer<cr>
   nnoremap <silent> [unite]fb :<C-u>Unite<space>file buffer<cr>
-  " カーソル位置の単語をgrep検索
   nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
-  " grep検索
   nnoremap <silent> [unite]gn :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-  " grep検索結果の再呼出
   nnoremap <silent> [unite]gr :<C-u>UniteResume search-buffer<CR>
-  " unite grep に ag(The Silver Searcher) を使う
   if executable('ag')
     let g:unite_source_grep_command = 'ag'
     let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
@@ -61,7 +56,6 @@ hook_add = '''
     let g:unite_source_grep_default_opts = '-nH'
     let g:unite_source_grep_recursive_opt = '-r'
   endif
-
 '''
 
 [[plugins]]
