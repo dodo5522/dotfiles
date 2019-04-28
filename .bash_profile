@@ -4,8 +4,8 @@ PS1="\[\e[36m\]\h\[\e[37m\]:\[\e[33m\]\W\[\e[37m\] $ "
 export PATH="/usr/local/linaro/arm-linux-gnueabihf-raspbian/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/opt/android-studio-ide-171.4443003-3.0.1:$PATH"
-export GOPATH="$HOME/go/bin"
-export PATH="$GOPATH:$HOME/.cargo/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export LESS='-g -i -M -R -S -W -z-4 -x4'
 
