@@ -10,6 +10,8 @@ repo = 'prabirshrestha/vim-lsp'
 #let g:lsp_log_file = expand('~/vim-lsp.log')
 #let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 hook_add = '''
+  nnoremap <C-]> :LspDefinition<ENTER>
+  nnoremap <C-[> <C-o>
   let g:lsp_diagnostics_enabled = 0
   if executable('pyls')
     au User lsp_setup call lsp#register_server({
