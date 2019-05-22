@@ -1,13 +1,5 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-# need pyvim @python3
-# pip3 install --user --upgrade pynvim
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
 
 [[plugins]]
 repo = 'w0rp/ale'
@@ -109,8 +101,6 @@ hook_add = 'let g:gitgutter_highlight_lines = 0'
 repo = 'vim-scripts/L9'
 [[plugins]]
 repo = 'vim-scripts/FuzzyFinder'
-[[plugins]]
-repo = 'vim-scripts/rails.vim'
 
 [[plugins]]
 repo = 'vim-scripts/trinity.vim'
