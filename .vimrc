@@ -153,5 +153,5 @@ if dein#check_install()
   call dein#install()
 endif
 
-filetype on
-filetype plugin indent on     " Required!
+" enable ftdetect, ftplugin, and indent
+filetype plugin indent on
