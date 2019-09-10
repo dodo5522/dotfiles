@@ -7,6 +7,7 @@ export PATH="/opt/android-studio-ide-171.4443003-3.0.1:$PATH"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="${HOME}/Library/Python/3.7/bin:$PATH"
 export LESS='-g -i -M -R -S -W -z-4 -x4'
 
 ### Added by anyenv
