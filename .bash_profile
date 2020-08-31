@@ -5,8 +5,10 @@ export PATH="/usr/local/linaro/arm-linux-gnueabihf-raspbian/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/opt/android-studio-ide-171.4443003-3.0.1:$PATH"
 export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.platformio/penv/bin:$PATH"
+export PATH="/usr/local/OpenJTalk/bin:$PATH"
 export PATH="${HOME}/Library/Python/3.7/bin:$PATH"
 export LESS='-g -i -M -R -S -W -z-4 -x4'
 
@@ -35,5 +37,7 @@ elif [ "$(uname)" = 'Linux' ]; then
 fi
 
 #export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -f "${HOME}/google-cloud-sdk/path.bash.inc" ] && \. "${HOME}/google-cloud-sdk/path.bash.inc"
+[ -f "${HOME}/google-cloud-sdk/completion.bash.inc" ] && \. "${HOME}/google-cloud-sdk/completion.bash.inc"
