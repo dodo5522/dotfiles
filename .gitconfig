@@ -15,10 +15,13 @@
 	dif = diff
 	co = checkout
 	ci = commit
+	ch = cherry-pick
 	stat = status
 	br = branch
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	pf = push --force-with-lease
+	pushf = push --force-with-lease
 [color]
 	ui = auto
 	diff = true
