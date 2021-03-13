@@ -6,10 +6,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/opt/android-studio-ide-171.4443003-3.0.1:$PATH"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.platformio/penv/bin:$PATH"
 export PATH="/usr/local/OpenJTalk/bin:$PATH"
-export PATH="${HOME}/Library/Python/3.7/bin:$PATH"
 export LESS='-g -i -M -R -S -W -z-4 -x4'
 
 ### Added by anyenv
@@ -21,6 +19,11 @@ if [ -d "$HOME/.anyenv" ]; then
         export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
     done
 fi
+
+### Added for nvm
+#export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 if [ "$(uname)" = 'Darwin' ]; then
 #    export PATH="/opt/gcc-arm-none-eabi-4_9-2015q3/bin:$PATH"
@@ -34,10 +37,12 @@ if [ "$(uname)" = 'Darwin' ]; then
     alias lsusb="system_profiler SPUSBDataType"
 elif [ "$(uname)" = 'Linux' ]; then
     export PATH="/opt/arduino-1.8.5:$PATH"
+    _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
 fi
 
-#export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+### Added for GCS
 [ -f "${HOME}/google-cloud-sdk/path.bash.inc" ] && \. "${HOME}/google-cloud-sdk/path.bash.inc"
 [ -f "${HOME}/google-cloud-sdk/completion.bash.inc" ] && \. "${HOME}/google-cloud-sdk/completion.bash.inc"
+
+### For rust env
+source "$HOME/.cargo/env"
